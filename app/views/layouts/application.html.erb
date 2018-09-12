@@ -24,8 +24,8 @@
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
         <li><%= link_to 'スケジュール一覧', schedules_path %></li>
-        <li><%= link_to 'スケジュール作成', new_schedule_path %>></li>
-        <li><a href="">マイページ</a></li>
+        <li><%= link_to 'スケジュール作成', new_schedule_path %></li>
+        <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
         <% else %>
         <li><%= link_to 'ログイン', new_user_session_path %></li>
         <li><%= link_to 'サインアップ', new_user_registration_path %></li>
