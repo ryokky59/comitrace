@@ -1,0 +1,2 @@
+class SchedulePlan < ApplicationRecord
+end
