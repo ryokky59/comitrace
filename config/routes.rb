@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show'
 
   get '/schedules/top', to: 'schedules#top'
   root 'schedules#top'

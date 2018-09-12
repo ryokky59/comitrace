@@ -6,6 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+def after_sign_out_path_for(resource)
+  new_user_session_path
+end
+
 module Comitrace
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
