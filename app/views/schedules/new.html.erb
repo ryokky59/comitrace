@@ -1,1 +1,8 @@
 <h1>ニュー</h1>
+
+<%= form_with(model: @schedule, local: true) do |f| %>
+<%= f.text_field :title %>
+<%= f.time_field :start_time, step: 600 %>
+<%= f.time_field :end_time, step: 600 %>
+<%= f.text_area :content %>
+<% end %>
