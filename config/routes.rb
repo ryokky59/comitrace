@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   root 'schedules#top'
   devise_for :users
   resources :users, :only => [:show]
-  resources :schedules
+  resources :schedules do
+    collection do
+      post :confirm
+    end
+  end
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 end

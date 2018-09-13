@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  before_action :set_schedule, only: [:edit, :update, :delete, :show]
+
   def top
   end
 
@@ -15,14 +17,17 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
     if @schedule.save
-      redirect_to schedules_path
+      redirect_to schedule_path(id: @schedule.id)
     else
       render 'new'
     end
   end
 
-  def confirm
-  end
+#  def confirm
+#    @schedule = Schedule.new(schedule_params)
+#    @schedule.user_id = current_user.id
+#    render 'new' if @schedule.invalid?
+#  end
 
   def edit
   end
@@ -38,7 +43,11 @@ class SchedulesController < ApplicationController
 
   private
   def schedule_params
-    params.require(:schedule).permit(:title, :content, schedule_plans_attributes: [:id,:plan, :start_time, :end_time, :_destroy])
+    params.require(:schedule).permit(:title, :content, schedule_plans_attributes: [:id,:plan, :start_time, :end_time])
+  end
+
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
   end
 
 
