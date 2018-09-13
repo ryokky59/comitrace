@@ -1,14 +1,18 @@
 <h1>ニュー</h1>
 
 <%= form_with(model: @schedule, local: true) do |f| %>
-<%= f.text_field :title %>
+<%= f.text_field :title %><hr>
 
 <%= f.fields_for :schedule_plans do |f| %>
   <%= f.text_field :plan %>
   <%= f.time_field :start_time, step: 600 %>
-  <%= f.time_field :end_time, step: 600 %>
+  <%= f.time_field :end_time, step: 600 %><br>
 <% end %>
-
+<%= f.fields_for :schedule_plans do |f| %>
+<%= f.text_field :plan %>
+<%= f.time_field :start_time, step: 600 %>
+<%= f.time_field :end_time, step: 600 %><hr>
+<% end %>
 <%= f.text_area :content %>
 <%= f.submit "登録" %>
 <% end %>
