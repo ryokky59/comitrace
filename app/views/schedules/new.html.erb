@@ -5,18 +5,18 @@
 
 <%= f.fields_for :schedule_plans do |f| %>
   <%= f.text_field :plan %>
-  <%= f.time_field :start_time, step: 600 %>
-  <%= f.time_field :end_time, step: 600 %><br>
+  <%= f.time_select :start_time, minute_step: 10 %>
+  <%= f.time_select :end_time, minute_step: 10 %><br>
 <% end %>
 <%= f.fields_for :schedule_plans do |f| %>
 <%= f.text_field :plan %>
-<%= f.time_field :start_time, step: 600 %>
-<%= f.time_field :end_time, step: 600 %><br>
+<%= f.time_select :start_time, minute_step: 10 %>
+<%= f.time_select :end_time, minute_step: 10 %><br>
 <% end %>
 <%= f.fields_for :schedule_plans do |f| %>
 <%= f.text_field :plan %>
-<%= f.time_field :start_time, step: 600 %>
-<%= f.time_field :end_time, step: 600 %><hr>
+<%= f.time_select :start_time, minute_step: 10 %>
+<%= f.time_select :end_time, minute_step: 10 %><hr>
 <% end %>
 
 <%= f.text_area :content %>

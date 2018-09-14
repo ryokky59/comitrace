@@ -1,13 +1,13 @@
 <h1>インデックス</h1>
 <% @schedules.each do |schedule| %>
 <%= schedule.title %><br>
-<% schedule.schedule_plans.each do |plan| %>
-<%= plan.plan %><br>
-<%= plan.start_time.strftime("%H : %M") %><br>
-<%= plan.end_time.strftime("%H : %M") %><br>
-<%= plan.start_time.to_i %><br>
-<%= plan.end_time.to_i %><br>
-<%= (plan.end_time.to_i - plan.start_time.to_i) / 3600 %><br>
+<% schedule.schedule_plans.each do |schedule_plan| %>
+<%= schedule_plan.plan %><br>
+<%= schedule_plan.start_time.strftime("%H : %M") %><br>
+<%= schedule_plan.end_time.strftime("%H : %M") %><br>
+<%= schedule_plan.start_time.to_i %><br>
+<%= schedule_plan.end_time.to_i %><br>
+<%= (schedule_plan.end_time.to_i - schedule_plan.start_time.to_i) / (60 * 60) %><br>
 <% end %>
 <%= schedule.content %>
 <hr>
