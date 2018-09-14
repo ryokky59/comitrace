@@ -17,17 +17,38 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
     if @schedule.save
-      redirect_to schedule_path(id: @schedule.id)
+      redirect_to confirm_schedules_path
     else
       render 'new'
     end
   end
 
-#  def confirm
-#    @schedule = Schedule.new(schedule_params)
-#    @schedule.user_id = current_user.id
-#    render 'new' if @schedule.invalid?
-#  end
+  def confirm
+    @schedule = Schedule.new(schedule_params)
+    @schedule.user_id = current_user.id
+
+    color = ["#b2b21f", "#3ff353", "#4d8964","#540a32"]
+
+    gon.data = []
+    gon.labels = []
+    gon.bgcolor = []
+    @schedule.schedule_plans.each do |s|
+      gon.labels << s.plan
+      if s.start_time > s.end_time
+        gon.data << 24 * 60 * 60 - (s.start_time.to_i - s.end_time.to_i)
+      else
+        gon.data << (s.end_time.to_i - s.start_time.to_i)
+      end
+      gon.bgcolor << color.sample
+    end
+
+
+#    gon.data = []
+#    @schedule.schedule_plans.size.times do
+#      gon.data << rand(100.0)
+#    end
+    render 'new' if @schedule.invalid?
+  end
 
   def edit
   end

@@ -1,4 +1,4 @@
-<!--
+
 <h1>今ファーム</h1>
 <%= form_with(model: @schedule, local: true, url: schedules_path) do |f| %>
 <%= f.hidden_field :title %>
@@ -25,4 +25,7 @@
 <%= f.hidden_field :content %>
 <%= f.submit "やり直す", name: 'back' %>
 <% end %>
--->
+
+<div class="chart-container" style="position: relative; height:100vh; width:100vh; float: right;">
+<canvas id="chart"></canvas>
+</div>

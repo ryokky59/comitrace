@@ -4,7 +4,12 @@ $(document).ready(function ()
     const config = {
         type: 'pie',
         data: scheduleChartData,
-        responsive : true
+
+        options: {
+          responsive : true,
+          legend: {position: 'left'},
+          //tooltips: {enabled: false}
+        }
         }
 
     const context = $("#chart")
@@ -14,12 +19,14 @@ $(document).ready(function ()
 
 const scheduleChartData = {
   datasets: [{
-      data: [10, 20, 30]
+      data: gon.data,
+      backgroundColor: gon.bgcolor
   }],
 
-  labels: [
-      'Red',
-      'Yellow',
-      'Blue'
-  ]
+  labels: gon.labels
+//  [
+//      'Red',
+//      'Yellow',
+//      'Blue'
+//  ]
 }

@@ -1,6 +1,6 @@
 <h1>ニュー</h1>
 
-<%= form_with(model: @schedule, local: true) do |f| %>
+<%= form_with(model: @schedule, local: true, url: confirm_schedules_path) do |f| %>
 <%= f.text_field :title %><hr>
 
 <%= f.fields_for :schedule_plans do |f| %>
