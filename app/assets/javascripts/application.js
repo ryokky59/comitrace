@@ -10,9 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require Chart.min
 //= require rails-ujs
-//= require turbolinks
 //= require jquery/dist/jquery.js
+//= require Chart.min
 //= require bootstrap/dist/js/bootstrap.min
 //= require_tree .

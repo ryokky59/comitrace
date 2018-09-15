@@ -1,14 +1,6 @@
 <h1>インデックス</h1>
 <% @schedules.each do |schedule| %>
-<%= schedule.title %><br>
-<% schedule.schedule_plans.each do |schedule_plan| %>
-<%= schedule_plan.plan %><br>
-<%= schedule_plan.start_time.strftime("%H : %M") %><br>
-<%= schedule_plan.end_time.strftime("%H : %M") %><br>
-<%= schedule_plan.start_time.to_i %><br>
-<%= schedule_plan.end_time.to_i %><br>
-<%= (schedule_plan.end_time.to_i - schedule_plan.start_time.to_i) / (60 * 60) %><br>
-<% end %>
-<%= schedule.content %>
-<hr>
+<%= link_to schedule.title, schedule_path(schedule.id) %><br>
+
+
 <% end %>
