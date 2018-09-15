@@ -22,7 +22,7 @@ class SchedulesController < ApplicationController
     gon.data = []
     gon.labels = []
     gon.bgcolor = []
-    color = ["##FF0000", "#FE9A2E", "#F7FE2E", "#0040FF", "#00FF40", "#DF01D7", "#00FFFF", "#8000FF", "#BFFF00", "#045FB4"]
+    color = ["#FF0000", "#FE9A2E", "#F7FE2E", "#0040FF", "#00FF40", "#DF01D7", "#00FFFF", "#8000FF", "#BFFF00", "#045FB4"]
 
     @schedule.schedule_plans.each do |schedule_plan|
       if schedule_plan.start_time > schedule_plan.end_time
@@ -36,7 +36,7 @@ class SchedulesController < ApplicationController
 
     render 'new' if @schedule.invalid?
   end
-  
+
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
@@ -46,9 +46,6 @@ class SchedulesController < ApplicationController
       render 'new'
     end
   end
-
-
-
 
   def edit
   end
@@ -65,7 +62,7 @@ class SchedulesController < ApplicationController
     gon.data = []
     gon.labels = []
     gon.bgcolor = []
-    color = ["##FF0000", "#FE9A2E", "#F7FE2E", "#0040FF", "#00FF40", "#DF01D7", "#00FFFF", "#8000FF", "#BFFF00", "#045FB4"]
+    color = ["#FF0000", "#FE9A2E", "#F7FE2E", "#0040FF", "#00FF40", "#DF01D7", "#00FFFF", "#8000FF", "#BFFF00", "#045FB4"]
 
     @schedule.schedule_plans.each do |schedule_plan|
       if schedule_plan.start_time > schedule_plan.end_time
@@ -76,6 +73,8 @@ class SchedulesController < ApplicationController
       gon.labels << schedule_plan.plan
       gon.bgcolor << color.sample
     end
+
+    @favorite = current_user.favorites.find_by(schedule_id: @schedule.id)
 
   end
 
