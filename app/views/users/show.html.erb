@@ -2,4 +2,9 @@
 <p><%= @user.name %></p>
 <h1><%= @user.profile %></h1>
 
+<%= render partial: 'follow_link', locals: { user: @user } %>
+
+<% unless current_user.id == @user.id %>
+<%= render partial: 'follow_form', locals: { user: @user } %>
+<% end %>
 <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
