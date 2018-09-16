@@ -75,7 +75,9 @@ class SchedulesController < ApplicationController
     end
 
     @favorite = current_user.favorites.find_by(schedule_id: @schedule.id)
-
+    
+    @comments = @schedule.comments
+    @comment = @schedule.comments.build
   end
 
   private
