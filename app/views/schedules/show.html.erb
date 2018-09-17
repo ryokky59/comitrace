@@ -21,6 +21,8 @@
   <% end %>
 <% end %>
 
+<%= link_to '選ぶ', schedule_choise_user_path(id: @schedule.id), method: :patch, class: 'btn' %>
+
 <div id="comments_area">
   <%= render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule } %>
 </div>

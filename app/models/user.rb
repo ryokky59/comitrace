@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  belongs_to :schedule
   has_many :schedules, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_schedules, through: :favorites, source: :schedule
@@ -11,6 +12,7 @@ class User < ApplicationRecord
   has_many :passive_follows, foreign_key: 'followed_id', class_name: 'Follow', dependent: :destroy
   has_many :following, through: :active_follows, source: :followed
   has_many :followers, through: :passive_follows, source: :follower
+
 
   def follow(other_user)
     following << other_user

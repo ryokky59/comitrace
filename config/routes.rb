@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     member do
       get :following, :followers
+      patch :schedule_choise
     end
   end
 
@@ -20,6 +21,6 @@ Rails.application.routes.draw do
   resources :favorites, only: [:create, :destroy]
 
   resources :follows, only: [:create, :destroy]
-  
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 end
