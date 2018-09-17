@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require jquery/dist/jquery.js
+//= require cocoon
 //= require Chart.min
 //= require bootstrap/dist/js/bootstrap.min
 //= require_tree .

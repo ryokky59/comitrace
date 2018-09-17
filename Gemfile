@@ -34,7 +34,8 @@ gem 'chart-js-rails'
 gem 'gon'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'turbolinks', '~> 5'
+gem 'nested_form_fields'
+gem 'cocoon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,8 @@
+<div class="nested-fields">
+  <div class="field">
+      <%= f.text_field :plan %>
+      <%= f.time_field :start_time, step: 600 %>
+      <%= f.time_field :end_time, step: 600 %><br>
+</div>
+  <%= link_to_remove_association "remove task", f %>
+</div>

@@ -13,6 +13,7 @@ class SchedulesController < ApplicationController
   def new
     @schedule = Schedule.new
     @schedule.schedule_plans.build
+
   end
 
   def confirm
@@ -25,6 +26,7 @@ class SchedulesController < ApplicationController
     color = ["#FF0000", "#FE9A2E", "#F7FE2E", "#0040FF", "#00FF40", "#DF01D7", "#00FFFF", "#8000FF", "#BFFF00", "#045FB4"]
 
     @schedule.schedule_plans.each do |schedule_plan|
+
       if schedule_plan.start_time > schedule_plan.end_time
         gon.data << 24 * 60 * 60 - (schedule_plan.start_time.to_i - schedule_plan.end_time.to_i)
       else
@@ -64,6 +66,7 @@ class SchedulesController < ApplicationController
     gon.bgcolor = []
     color = ["#FF0000", "#FE9A2E", "#F7FE2E", "#0040FF", "#00FF40", "#DF01D7", "#00FFFF", "#8000FF", "#BFFF00", "#045FB4"]
 
+
     @schedule.schedule_plans.each do |schedule_plan|
       if schedule_plan.start_time > schedule_plan.end_time
         gon.data << 24 * 60 * 60 - (schedule_plan.start_time.to_i - schedule_plan.end_time.to_i)
@@ -75,14 +78,14 @@ class SchedulesController < ApplicationController
     end
 
     @favorite = current_user.favorites.find_by(schedule_id: @schedule.id)
-    
+
     @comments = @schedule.comments
     @comment = @schedule.comments.build
   end
 
   private
   def schedule_params
-    params.require(:schedule).permit(:title, :content, schedule_plans_attributes: [:id,:plan, :start_time, :end_time])
+    params.require(:schedule).permit(:title, :content, schedule_plans_attributes: [:id, :schedule_id, :plan, :start_time, :end_time, :_destroy])
   end
 
   def set_schedule
