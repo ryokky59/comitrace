@@ -21,7 +21,13 @@
   <% end %>
 <% end %>
 
-<%= link_to '選ぶ', schedule_choise_user_path(id: @schedule.id), method: :patch, class: 'btn' %>
+<div id="schedule_choise_btn">
+  <% if @user.schedule_id == @schedule.id %>
+    <h1>選択中</h1>
+  <% else %>
+    <%= link_to '選ぶ', schedule_choise_user_path(id: @schedule.id), method: :patch, class: 'btn' %>
+  <% end %>
+</div>
 
 <div id="comments_area">
   <%= render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule } %>
