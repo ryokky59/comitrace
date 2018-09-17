@@ -1,6 +1,5 @@
 
-$(document).ready(function ()
-{
+$(document).ready(function (){
     const config = {
         type: 'pie',
         data: scheduleChartData,

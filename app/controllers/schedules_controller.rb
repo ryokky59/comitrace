@@ -13,7 +13,6 @@ class SchedulesController < ApplicationController
   def new
     @schedule = Schedule.new
     @schedule.schedule_plans.build
-
   end
 
   def confirm

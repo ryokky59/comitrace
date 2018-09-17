@@ -31,13 +31,25 @@
     </table>
     <%= f.add_nested_fields_link :schedule_plans, 'Add new', class: 'btn btn-primary', role: 'button' %>
 -->
-<div id="tasks">
+<div class="schedule-form">
   <%= f.fields_for :schedule_plans do |schedule_plan| %>
-    <%= render 'schedule_plan_fields', f: schedule_plan %>
+    <%= link_to_add_association '追加', f, :schedule_plans, id: 'add-link', data: {association_insertion_node: '#schedule_plans', association_insertion_method: 'append'} %>
+
+    <table>
+      <thead>
+        <tr>
+          <th>プラン</th>
+          <th>開始時間</th>
+          <th>終了時間</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="schedule_plans">
+        <%= render 'schedule_plan_fields', f: schedule_plan %>
   <% end %>
-  <div class="links">
-    <%= link_to_add_association 'add task', f, :schedule_plans %>
-  </div>
+</tbody>
+</table>
+
 </div>
 
 
