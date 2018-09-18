@@ -1,5 +1,5 @@
 <h1>ショウ</h1>
-<%= @user.name %>
+<%= link_to @user.name, user_path(@user.id) %>
 <%= @schedule.title %>
 
 <% @schedule.schedule_plans.each do |schedule_plan| %>

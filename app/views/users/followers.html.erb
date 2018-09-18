@@ -1,5 +1,8 @@
-<% @users.each do |users| %>
-<%= link_to users.name, user_path(users.id) %><br>
-<%= users.profile %>
+<% @users.each do |user| %>
+<%= link_to user.name, user_path(user.id) %><br>
+<% unless user.id == current_user.id %>
+<%= render 'follow_form', user: user %>
+<% end %>
+<%= user.profile %>
 
 <% end %>
