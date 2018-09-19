@@ -5,9 +5,8 @@ class SchedulesController < ApplicationController
   end
 
   def index
-    @schedules = Schedule.all
+    @schedules = Schedule.order(created_at: :desc).page(params[:page]).per(6)
     #@schedules = Schedule.all.includes(:schedule_plans)子要素も載せたい時
-
   end
 
   def new
@@ -49,6 +48,7 @@ class SchedulesController < ApplicationController
   end
 
   def edit
+
   end
 
   def update

@@ -1,6 +1,25 @@
-<h1>インデックス</h1>
-<% @schedules.each do |schedule| %>
-<%= link_to schedule.title, schedule_path(schedule.id) %><br>
+<div class="schedule-index container">
+  <div class="row">
+    <% @schedules.each do |schedule| %>
+      <div class="schedule-box col-lg-4 col-sm-6 col-xs-6">
+        <div class="box-user-info">
+          <p>
+            <% if schedule.user.icon.present? %>
+              <%= image_tag schedule.user.icon, class: "schedule-icon"%>
+            <% else %>
+              <%= image_tag asset_path("usericon.png"), class: "schedule-icon" %>
+            <% end %>
+          </p>
+          <p><%= link_to schedule.user.name, user_path(id: schedule.user_id) %></p>
+        </div>
+        <div class="box-schedule-info">
+        <h4><%= link_to schedule.title, schedule_path(schedule.id) %></h4>
+        <p><%= schedule.content %></p>
+        </div>
+      </div>
+      <% end %>
+<div class="schedule-pagenation">
+<%= paginate @schedules %>
+</div>
 
-
-<% end %>
+</div>

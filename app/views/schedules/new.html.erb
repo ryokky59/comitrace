@@ -2,35 +2,6 @@
 
 <%= form_with(model: @schedule, local: true, url: confirm_schedules_path) do |f| %>
 <%= f.text_field :title %><hr>
-<!--
-<%= f.fields_for :schedule_plans do |f| %>
-  <%= f.text_field :plan %>
-  <%= f.time_field :start_time, step: 600 %>
-  <%= f.time_field :end_time, step: 600 %><br>
-<% end %>
--->
-<!--
-<table class="table table-striped table-bordered table-hover">
-        <tbody>
-
-          <tr>
-             <th>予定</th>
-             <th>開始時間</th>
-             <th>終了時間</th>
-             <th>Action</th>
-          </tr>
-
-          <%= f.nested_fields_for :schedule_plans, wrapper_tag: :tr do |q| %>
-              <td><%= q.text_field :plan, class: 'form-control' %></td>
-              <td><%= q.time_field :start_time, step: 600, class: 'form-control' %></td>
-              <td><%= q.time_field :end_time, step: 600, class: 'form-control' %></td>
-              <td><%= q.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
-          <% end %>
-
-      </tbody>
-    </table>
-    <%= f.add_nested_fields_link :schedule_plans, 'Add new', class: 'btn btn-primary', role: 'button' %>
--->
 <div class="schedule-form">
   <%= f.fields_for :schedule_plans do |schedule_plan| %>
     <%= link_to_add_association '追加', f, :schedule_plans, id: 'add-link', data: {association_insertion_node: '#schedule_plans', association_insertion_method: 'append'} %>

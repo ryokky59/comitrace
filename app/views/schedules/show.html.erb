@@ -1,13 +1,27 @@
-<h1>ショウ</h1>
-<%= link_to @user.name, user_path(@user.id) %>
-<%= @schedule.title %>
-
-<% @schedule.schedule_plans.each do |schedule_plan| %>
-<%= schedule_plan.plan %><br>
-<%= schedule_plan.start_time.strftime("%H : %M") %><br>
-<%= schedule_plan.end_time.strftime("%H : %M") %><br>
-<% end %>
-
+<div class="schedule-show">
+  <div class="row">
+    <div class="schedule-show-title">
+      <h1><%= @schedule.title %></h1>
+    </div>
+    <div class="schedule-show-user">
+      <p>
+        <% if @schedule.user.icon.present? %>
+          <%= image_tag schedule.user.icon, class: "schedule-show-icon"%>
+        <% else %>
+          <%= image_tag asset_path("usericon.png"), class: "schedule-show-icon" %>
+        <% end %>
+      </p>
+      <p>作成者 : <%= link_to @user.name, user_path(@user.id) %></p>
+    </div>
+    <div class="schedule-show-plan">
+      <% @schedule.schedule_plans.each do |schedule_plan| %>
+        <p>
+          <%= schedule_plan.plan %> :
+          <%= schedule_plan.start_time.strftime("%H : %M") %> 〜
+          <%= schedule_plan.end_time.strftime("%H : %M") %>
+        </p>
+      <% end %>
+    </div>
 <%= @schedule.content %>
 
 <div class="chart-container" style="position: relative; height:100vh; width:100vh; float: right;">
@@ -22,7 +36,7 @@
 <% end %>
 
 <div id="schedule_choise_btn">
-  <% if @user.schedule_id == @schedule.id %>
+  <% if current_user.schedule_id == @schedule.id %>
     <h1>選択中</h1>
   <% else %>
     <%= link_to '選ぶ', schedule_choise_user_path(id: @schedule.id), method: :patch, class: 'btn' %>
@@ -32,6 +46,5 @@
 <div id="comments_area">
   <%= render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule } %>
 </div>
-
 
   <%= render partial: 'comments/form', locals: { comment: @comment, schedule: @schedule } %>
