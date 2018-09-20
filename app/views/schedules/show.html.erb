@@ -1,9 +1,8 @@
-<div class="schedule-show">
+<div class="schedules-show">
   <div class="row">
-    <div class="schedule-show-title">
-      <h1><%= @schedule.title %></h1>
-    </div>
-    <div class="schedule-show-user">
+    <div class="schedules-show-contents">
+
+    <div class="schedules-show-user">
       <p>
         <% if @schedule.user.icon.present? %>
           <%= image_tag schedule.user.icon, class: "schedule-show-icon"%>
@@ -13,38 +12,60 @@
       </p>
       <p>作成者 : <%= link_to @user.name, user_path(@user.id) %></p>
     </div>
-    <div class="schedule-show-plan">
-      <% @schedule.schedule_plans.each do |schedule_plan| %>
-        <p>
-          <%= schedule_plan.plan %> :
-          <%= schedule_plan.start_time.strftime("%H : %M") %> 〜
-          <%= schedule_plan.end_time.strftime("%H : %M") %>
-        </p>
-      <% end %>
+    <div class="schedules-show-title">
+      <h1><%= @schedule.title %></h1>
     </div>
-<%= @schedule.content %>
+    <div class="schedules-show-plan">
+      <table>
+        <thead>
+          <tr>
+            <th>予定</th>
+            <th></th>
+            <th>開始時間</th>
+            <th></th>
+            <th>終了時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @schedule.schedule_plans.each do |schedule_plan| %>
+            <tr>
+              <td><%= schedule_plan.plan %></td>
+              <td>:</td>
+              <td><%= schedule_plan.start_time.strftime("%H : %M") %></td>
+              <td>〜</td>
+              <td><%= schedule_plan.end_time.strftime("%H : %M") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="schedules-show-content">
+      <%= @schedule.content %>
+    </div>
+  </div>
 
-<div class="chart-container" style="position: relative; height:100vh; width:100vh; float: right;">
-<canvas id="chart"></canvas>
+  <div class="schedules-show-charts">
+    <div class="schedules-show-chart">
+      <canvas id="chart"></canvas>
+    </div>
 
-<% unless @schedule.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(schedule_id: @schedule.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
+    <div id="favorite-btn" class="schedules-show-favorite">
+      <%= render partial: 'favorite_btn', locals: { schedule: @schedule } %>
+    </div>
+  </div>
 
-<div id="schedule_choise_btn">
+  <div id="schedule_choise_btn" class="schedules-show-choise">
   <% if current_user.schedule_id == @schedule.id %>
     <h1>選択中</h1>
   <% else %>
     <%= link_to '選ぶ', schedule_choise_user_path(id: @schedule.id), method: :patch, class: 'btn' %>
   <% end %>
-</div>
+  </div>
+  </div>
 
+  <div class="schedules-show-comments">
 <div id="comments_area">
   <%= render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule } %>
 </div>
-
   <%= render partial: 'comments/form', locals: { comment: @comment, schedule: @schedule } %>
+</div>
