@@ -1,25 +1,28 @@
-<div class="schedule-index container">
+<div class="schedule-index">
+  <div class="container">
   <div class="row">
     <% @schedules.each do |schedule| %>
-      <div class="schedule-box col-lg-4 col-sm-6 col-xs-6">
-        <div class="box-user-info">
-          <p>
-            <% if schedule.user.icon.present? %>
-              <%= image_tag schedule.user.icon, class: "schedule-icon"%>
-            <% else %>
-              <%= image_tag asset_path("usericon.png"), class: "schedule-icon" %>
-            <% end %>
-          </p>
-          <p><%= link_to schedule.user.name, user_path(id: schedule.user_id) %></p>
+      <div class="schedule-index-card col-lg-4 col-md-6 col-sm-12">
+<div class="card">
+
+        <div class="card-header">
+          <%= link_to schedule.title, schedule_path(schedule.id) %>
         </div>
-        <div class="box-schedule-info">
-        <h4><%= link_to schedule.title, schedule_path(schedule.id) %></h4>
+        <div class="card-body">
         <p><%= schedule.content %></p>
+      </div>
+        <div class="card-footer">
+            <% if schedule.user.icon.present? %>
+              <%= image_tag schedule.user.icon, class: "float-right"%>
+            <% else %>
+              <%= image_tag asset_path("usericon.png"), class: "float-right" %>
+            <% end %>
+            <p class="float-right">投稿者:<%= link_to schedule.user.name, user_path(id: schedule.user_id) %></p>
         </div>
       </div>
+      </div>
       <% end %>
+      </div>
 <div class="schedule-pagenation">
 <%= paginate @schedules %>
-</div>
-
 </div>

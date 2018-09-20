@@ -3,41 +3,55 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // index
-.schedule-box {
-  float: left;
+.schedule-index-card {
+  padding: 0;
+
 }
 
-.box-user-info {
-  float: left;
-  text-align: center;
-  padding: 20px;
+.schedule-index-card .card {
+  margin: 10px;
 }
 
-.schedule-icon {
+.schedule-index-card .card-header {
+  padding: 0px, 10px;
   height: 50px;
-  width: 50px;
-  border-radius: 50%;
 }
-
-.box-schedule-info {
-  float: left;
-  padding: 0px;
-}
-
-.box-schedule-info h4 {
+.schedule-index-card .card-header a {
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
-.box-schedule-info p {
-  font-size: 1.5rem;
+.schedule-index-card .card-body {
+  height: 200px;
+}
+
+.schedule-index-card .card-footer {
+    height: 45px;
+}
+
+.schedule-index-card .card-footer p {
+  margin-bottom: 0;
+}
+.schedule-index-card .card-footer img {
+  width: 20px;
+  height: 20px;
 }
 
 // show
 .schedules-show-user img {
   height: 50px;
   width: 50px;
-  float:
+  border-radius: 50%;
+
 }
+
+.chartjs-render-monitor {
+  height: 400px !important;
+  width: 400px !important;
+  margin: 0px !important;
+}
+
+
 .schedules-show-chart {
   height: 200vh;
   width: 200vh;

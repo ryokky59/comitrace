@@ -1,1 +1,36 @@
+body {
+  padding-top: 4.5rem;
+}
+.navbar a {
+  position: relative;
+  display: inline-block;
+  transition: .3s;
+  color: #313131;
+}
+.navbar a::before,
+.navbar a::after {
+  position: absolute;
+  left: 50%;
+  content: '';
+  width: 0;
+  height: 1px;
+  background-color: black;
+  transition: .3s;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.navbar a::before {
+  top: 0;
+}
+.navbar a::after {
+  bottom: 0;
+}
+.navbar a:hover::before,
+.navbar a:hover::after {
+  width: 100%;
+}
 
+.navbar a:hover {
+  text-decoration: none;
+  color: #313131;
+}

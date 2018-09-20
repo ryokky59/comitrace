@@ -1,19 +1,20 @@
 <div class="schedules-show">
+  <div class="container">
   <div class="row">
-    <div class="schedules-show-contents">
+    <div class="schedules-show-contents col-sm-4">
 
-    <div class="schedules-show-user">
-      <p>
+    <div class="schedules-show-user row">
+      <p class="col-sm-4">
         <% if @schedule.user.icon.present? %>
           <%= image_tag schedule.user.icon, class: "schedule-show-icon"%>
         <% else %>
           <%= image_tag asset_path("usericon.png"), class: "schedule-show-icon" %>
         <% end %>
       </p>
-      <p>作成者 : <%= link_to @user.name, user_path(@user.id) %></p>
+      <p class="col-sm-8">作成者 : <%= link_to @user.name, user_path(@user.id) %></p>
     </div>
     <div class="schedules-show-title">
-      <h1><%= @schedule.title %></h1>
+      <p><%= @schedule.title %></p>
     </div>
     <div class="schedules-show-plan">
       <table>
@@ -44,9 +45,9 @@
     </div>
   </div>
 
-  <div class="schedules-show-charts">
+  <div class="schedules-show-charts col-sm-8">
     <div class="schedules-show-chart">
-      <canvas id="chart"></canvas>
+      <canvas id="chart" width="400vh" height="400vh"></canvas>
     </div>
 
     <div id="favorite-btn" class="schedules-show-favorite">
@@ -62,7 +63,7 @@
   <% end %>
   </div>
   </div>
-
+</div>
   <div class="schedules-show-comments">
 <div id="comments_area">
   <%= render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule } %>
