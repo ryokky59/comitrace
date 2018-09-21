@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
 #  belongs_to :schedule スケジュールと一対多にするとサインアップで引っかかる
   has_many :schedules, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_schedules, through: :favorites, source: :schedule
   has_many :active_follows, foreign_key: 'follower_id', class_name: 'Follow', dependent: :destroy

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
     member do
-      get :following, :followers
+      get :following, :followers, :favorite_stocks, :create_stocks
       patch :schedule_choise
     end
   end

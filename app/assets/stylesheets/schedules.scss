@@ -74,12 +74,14 @@
   letter-spacing: 0.1rem;
 }
 
-.schedule-show-chart {
-  padding: 30px;
-}
+
 
 .chartjs-render-monitor {
   height: 500px !important;
   width: 500px !important;
   text-align: center !important;
+}
+
+.schedules-show-comments {
+  padding: 50px;
 }

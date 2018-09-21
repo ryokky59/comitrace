@@ -1,7 +1,6 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
-
   def create
     @favorite = current_user.favorites.create(schedule_id: params[:schedule_id])
     @schedule = Schedule.find(params[:schedule_id])

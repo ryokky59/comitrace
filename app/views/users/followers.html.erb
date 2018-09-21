@@ -1,8 +1,4 @@
-<% @users.each do |user| %>
-<%= link_to user.name, user_path(user.id) %><br>
-<% unless user.id == current_user.id %>
-<%= render 'follow_form', user: user %>
-<% end %>
-<%= user.profile %>
-
-<% end %>
+<div class="users-followers text-center">
+<h1 class="m-5"><%= @user.name %>さんのフォロワー一覧</h1>
+<%= render partial: 'follow_users', locals: { users: @users } %>
+</div>

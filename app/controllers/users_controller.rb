@@ -36,6 +36,16 @@ class UsersController < ApplicationController
     @users = @user.followers
   end
 
+  def favorite_stocks
+    @user = User.find(params[:id])
+    @schedules = @user.favorite_schedules.order(created_at: :desc).page(params[:page]).per(6)
+  end
+
+  def create_stocks
+    @user  = User.find(params[:id])
+    @schedules = @user.schedules.order(created_at: :desc).page(params[:page]).per(6)
+  end
+
   def schedule_choise
     @user  = current_user
     @schedule = Schedule.find(params[:id])

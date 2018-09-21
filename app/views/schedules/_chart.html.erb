@@ -1,0 +1,5 @@
+<div class="schedule-chart mt-4">
+<div style="margin-left:224px;"><%= @schedule.schedule_plans[0].start_time.strftime("%H : %M") %></div>
+  <canvas id="chart" width="100%" height="100%"></canvas>
+<div style="margin-left:224px;"><%= @schedule.schedule_plans[0].start_time.since(12.hours).strftime("%H : %M") %></div>
+</div>

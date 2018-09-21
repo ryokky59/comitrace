@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   def create
     @schedule = Schedule.find(params[:schedule_id])
     @comment = @schedule.comments.build(comment_params)
-
+    @comment.user_id = current_user.id
+    
     respond_to do |format|
       if @comment.save
         format.js { render :index }
@@ -14,6 +15,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:schedule_id, :comment)
+    params.require(:comment).permit(:schedule_id, :user_id, :comment)
   end
 end

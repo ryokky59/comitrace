@@ -43,11 +43,7 @@
   </div>
 
   <div class="schedules-show-charts col-sm-7">
-    <div class="schedules-show-chart">
-    <div style="margin-left:224px;"><%= @schedule.schedule_plans[0].start_time.strftime("%H : %M") %></div>
-      <canvas id="chart" width="100%" height="100%"></canvas>
-    <div style="margin-left:224px;"><%= @schedule.schedule_plans[0].start_time.since(12.hours).strftime("%H : %M") %></div>
-    </div>
+    <%= render 'chart' %>
 
     <div id="favorite_btn" class="schedules-show-favorite">
       <%= render partial: 'favorite_btn', locals: { schedule: @schedule } %>
@@ -63,10 +59,10 @@
   </div>
 </div>
 
-  <div class="schedules-show-comments">
-<div id="comments_area">
-  <%= render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule } %>
-</div>
-  <%= render partial: 'comments/form', locals: { comment: @comment, schedule: @schedule } %>
+  <div class="schedules-show-comments text-center">
+    <%= render partial: 'comments/form', locals: { comment: @comment, schedule: @schedule } %>
+  <div id="comments_area">
+    <%= render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule } %>
+  </div>
 </div>
 </div>
