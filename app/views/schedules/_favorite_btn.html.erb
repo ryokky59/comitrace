@@ -1,6 +1,3 @@
-
-
-
 <% unless schedule.user_id == current_user.id %>
 <% if @favorite.present? %>
 <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, remote: true, class: 'btn btn-danger' %>
@@ -8,14 +5,5 @@
 <% else %>
 <%= link_to 'お気に入りする', favorites_path(schedule_id: @schedule.id), method: :post, remote: true, class: 'btn btn-primary' %>
 
-
-<%#= form_with(model: current_user.favorites.find_by(schedule_id: schedule.id), method: :delete ) do |f| %>
-  <%#= f.submit "お気に入り解除" %>
-  <%# end %>
-<%# else %>
-<%#= form_with(model: current_user.favorites.new(schedule_id: schedule.id) ) do |f| %>
-  <%#= f.hidden_field :schedule_id %>
-  <%#= f.submit "お気に入り" %>
-  <%# end %>
 <% end %>
 <% end %>

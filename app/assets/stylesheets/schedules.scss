@@ -37,22 +37,49 @@
   height: 20px;
 }
 
+.schedule-index-pagenation {
+  margin: 20px;
+}
+
+// new
+.schedule-form .container {
+  margin-bottom: 50px;
+}
+.schedule-area .title-form input {
+  width: 20rem;
+  letter-spacing: 0.1rem;
+}
+
+.schedule-area .content-form textarea {
+  width: 20rem;
+  height: 15rem;
+  letter-spacing: 0.1rem;
+}
+
+.schedule-plan-area .nested-fields input {
+  letter-spacing: 0.1rem;
+}
+
+
+
 // show
-.schedules-show-user img {
+.schedule-show-contents .user img {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+}
 
+.schedules-show-content p {
+  word-wrap: break-word;
+  letter-spacing: 0.1rem;
+}
+
+.schedule-show-chart {
+  padding: 30px;
 }
 
 .chartjs-render-monitor {
-  height: 400px !important;
-  width: 400px !important;
-  margin: 0px !important;
-}
-
-
-.schedules-show-chart {
-  height: 200vh;
-  width: 200vh;
+  height: 500px !important;
+  width: 500px !important;
+  text-align: center !important;
 }

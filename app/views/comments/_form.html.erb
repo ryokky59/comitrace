@@ -1,11 +1,10 @@
 <%= form_with(model: [schedule, comment]) do |f| %>
 
-  <div class="field">
-    <%= f.label :comment %>
+  <div class="form">
     <%= f.text_area :comment %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="btn">
+    <%= f.submit class: "btn btn-secondary" %>
   </div>
 <% end %>

@@ -1,12 +1,11 @@
 <h1><%= @user.name %>さんのページ</h1>
 <div class="">
   <% if @user.icon.present? %>
-    <%= image_tag user.icon %>
+    <%= image_tag @user.icon %>
   <% else %>
     <%= image_tag asset_path("usericon.png") %>
   <% end %>
 </div>
-<p><%= image_tag @user.icon %></p>
 <p><%= @user.name %></p>
 <h1><%= @user.profile %></h1>
 

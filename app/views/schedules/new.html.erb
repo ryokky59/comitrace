@@ -1,18 +1,29 @@
-<h1>ニュー</h1>
+<div class="schedule-form">
 
 <%= form_with(model: @schedule, local: true, url: confirm_schedules_path) do |f| %>
-<%= f.text_field :title %><hr>
-<div class="schedule-form">
+<div class="container">
+  <div class="row">
+<div class="schedule-area text-center col-md-6 col-sm-12">
+  <div class="title-form">
+<p>スケジュールタイトル</p>
+<%= f.text_field :title %>
+</div>
+<div class="content-form">
+  <p>スケジュールコンテント</p>
+<%= f.text_area :content %>
+</div>
+</div>
+<div class="schedule-plan-area col-md-6 col-sm-12">
   <%= f.fields_for :schedule_plans do |schedule_plan| %>
-    <%= link_to_add_association '追加', f, :schedule_plans, id: 'add-link', data: {association_insertion_node: '#schedule_plans', association_insertion_method: 'append'} %>
+
 
     <table>
       <thead>
         <tr>
-          <th>プラン</th>
-          <th>開始時間</th>
-          <th>終了時間</th>
-          <th></th>
+          <th class="text-center">プラン</th>
+          <th class="text-center">開始時間</th>
+          <th class="text-center">終了時間</th>
+          <th class="text-center"><%= link_to_add_association '追加', f, :schedule_plans, id: 'add-link', class: "btn btn-sm btn-primary", data: {association_insertion_node: '#schedule_plans', association_insertion_method: 'append'} %></th>
         </tr>
       </thead>
       <tbody id="schedule_plans">
@@ -20,13 +31,16 @@
   <% end %>
 </tbody>
 </table>
+</div>
 
+</div>
 </div>
 
 
-<%= f.text_area :content %>
+
+<div class="schedule-form-btn text-center">
 <%= f.submit "確認" %>
+</div>
 <% end %>
 
-<div class="chart-container" style="position: relative; height:100vh; width:100vh; float: right;">
-<canvas id="chart"></canvas>
+</div>

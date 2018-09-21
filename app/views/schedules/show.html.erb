@@ -1,17 +1,14 @@
 <div class="schedules-show">
   <div class="container">
   <div class="row">
-    <div class="schedules-show-contents col-sm-4">
-
-    <div class="schedules-show-user row">
-      <p class="col-sm-4">
+    <div class="schedule-show-contents col-sm-5">
+    <div class="user row">
         <% if @schedule.user.icon.present? %>
-          <%= image_tag schedule.user.icon, class: "schedule-show-icon"%>
+          <%= image_tag @schedule.user.icon, class: "schedule-show-icon"%>
         <% else %>
           <%= image_tag asset_path("usericon.png"), class: "schedule-show-icon" %>
         <% end %>
-      </p>
-      <p class="col-sm-8">作成者 : <%= link_to @user.name, user_path(@user.id) %></p>
+      <p class="col-sm-8 text-left">作成者 : <%= link_to @user.name, user_path(@user.id) %></p>
     </div>
     <div class="schedules-show-title">
       <p><%= @schedule.title %></p>
@@ -41,32 +38,35 @@
       </table>
     </div>
     <div class="schedules-show-content">
-      <%= @schedule.content %>
+      <p><%= @schedule.content %></p>
     </div>
   </div>
 
-  <div class="schedules-show-charts col-sm-8">
+  <div class="schedules-show-charts col-sm-7">
     <div class="schedules-show-chart">
-      <canvas id="chart" width="400vh" height="400vh"></canvas>
+    <div style="margin-left:224px;"><%= @schedule.schedule_plans[0].start_time.strftime("%H : %M") %></div>
+      <canvas id="chart" width="100%" height="100%"></canvas>
+    <div style="margin-left:224px;"><%= @schedule.schedule_plans[0].start_time.since(12.hours).strftime("%H : %M") %></div>
     </div>
 
-    <div id="favorite-btn" class="schedules-show-favorite">
+    <div id="favorite_btn" class="schedules-show-favorite">
       <%= render partial: 'favorite_btn', locals: { schedule: @schedule } %>
     </div>
-  </div>
-
-  <div id="schedule_choise_btn" class="schedules-show-choise">
-  <% if current_user.schedule_id == @schedule.id %>
-    <h1>選択中</h1>
-  <% else %>
-    <%= link_to '選ぶ', schedule_choise_user_path(id: @schedule.id), method: :patch, class: 'btn' %>
-  <% end %>
+    <div id="schedule_choise_btn" class="schedules-show-choise">
+    <% if current_user.schedule_id == @schedule.id %>
+      <p class="btn btn-info disabled">選択中</p>
+    <% else %>
+      <%= link_to '選ぶ', schedule_choise_user_path(id: @schedule.id), method: :patch, class: 'btn btn-info' %>
+    <% end %>
+    </div>
   </div>
   </div>
 </div>
+
   <div class="schedules-show-comments">
 <div id="comments_area">
   <%= render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule } %>
 </div>
   <%= render partial: 'comments/form', locals: { comment: @comment, schedule: @schedule } %>
+</div>
 </div>
