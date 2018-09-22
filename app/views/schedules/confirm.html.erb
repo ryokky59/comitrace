@@ -1,29 +1,25 @@
-<h1>今ファーム</h1>
+<div class="schedules-confirm">
 <%= form_with(model: @schedule, local: true, url: schedules_path) do |f| %>
-<%= f.hidden_field :title %>
-<%= f.hidden_field :content %>
-<%= @schedule.title %><hr>
+  <%= f.hidden_field :title %>
+  <%= f.hidden_field :content %>
+  <%= f.fields_for :schedule_plans do |f| %>
+    <%= f.hidden_field :plan %>
+    <%= f.hidden_field :start_time %>
+    <%= f.hidden_field :end_time %>
+  <% end %>
+  <%= render partial: 'schedule_content' %>
+  <%= f.submit "登録" %>
 
-<% s = 0 %>
-<%= f.fields_for :schedule_plans do |f| %>
-<%= f.hidden_field :plan %>
-<%= f.hidden_field :start_time %>
-<%= f.hidden_field :end_time %>
-<%= @schedule.schedule_plans[s].plan %><br>
-<%= @schedule.schedule_plans[s].start_time.strftime("%H : %M") %><br>
-<%= @schedule.schedule_plans[s].end_time.strftime("%H : %M") %><hr>
-<% s += 1 %>
 <% end %>
 
-<%= @schedule.content %><br>
-<%= f.submit "登録" %>
+<%= form_with(model: @schedule, local: true, url: new_schedule_path, method: 'get') do |f| %>
+  <%= f.hidden_field :title %>
+  <%= f.hidden_field :content %>
+  <%= f.fields_for :schedule_plans do |f| %>
+  <%= f.hidden_field :plan %>
+  <%= f.hidden_field :start_time %>
+  <%= f.hidden_field :end_time %>
 <% end %>
-
-<%= form_with(model: @schedule, url: new_schedule_path, local: true, method: 'get') do |f| %>
-<%= f.hidden_field :title %>
-<%= f.hidden_field :content %>
-<%= f.submit "やり直す", name: 'back' %>
+  <%= f.submit "もどる", name: 'back', class: "brn btn-danger" %>
 <% end %>
-
-<%= render 'chart' %>
 </div>

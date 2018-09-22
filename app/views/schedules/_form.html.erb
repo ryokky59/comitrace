@@ -1,1 +1,44 @@
-<h1>フォーム</h1>
+<div class="schedule-form">
+<%= form_with(model: @schedule, local: true, url: choose_new_or_edit) do |f| %>
+<div class="container">
+  <div class="row">
+<div class="schedule-area text-center col-md-6 col-sm-12">
+  <div class="title-form">
+<p>スケジュールタイトル</p>
+<%= f.text_field :title %>
+</div>
+<div class="content-form">
+  <p>スケジュールコンテント</p>
+<%= f.text_area :content %>
+</div>
+</div>
+<div class="schedule-plan-area col-md-6 col-sm-12">
+
+    <table>
+      <thead>
+        <tr>
+          <th class="text-center">プラン</th>
+          <th class="text-center">開始時間</th>
+          <th class="text-center">終了時間</th>
+          <th class="text-center"><%= link_to_add_association '追加', f, :schedule_plans, id: 'add-link', class: "btn btn-sm btn-primary", data: {association_insertion_node: '#schedule_plans', association_insertion_method: 'append'} %></th>
+        </tr>
+      </thead>
+      <tbody id="schedule_plans">
+      <%= f.fields_for :schedule_plans do |schedule_plan| %>
+        <%= render 'schedule_plan_fields', f: schedule_plan %>
+      <% end %>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="schedule-form-btn text-center">
+<%= f.submit "確認" %>
+</div>
+<% end %>
+
+</div>

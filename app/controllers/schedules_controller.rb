@@ -10,8 +10,12 @@ class SchedulesController < ApplicationController
   end
 
   def new
-    @schedule = Schedule.new
-    @schedule.schedule_plans.build
+    if params[:back]
+      @schedule = Schedule.new(schedule_params)
+    else
+      @schedule = Schedule.new
+      @schedule.schedule_plans.build
+    end
   end
 
   def confirm
@@ -48,10 +52,15 @@ class SchedulesController < ApplicationController
   end
 
   def edit
-
+    @schedule.user_id = current_user.id
   end
 
   def update
+    if @schedule.update(schedule_params)
+      redirect_to schedule_path(id: @schedule.id)
+    else
+      render 'edit'
+    end
   end
 
   def delete

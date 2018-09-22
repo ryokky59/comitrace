@@ -1,0 +1,41 @@
+<div class="schedules-show">
+  <div class="container">
+    <div class="row">
+      <div class="schedule-show-contents col-sm-5">
+        <div class="schedules-show-title">
+          <p><%= @schedule.title %></p>
+        </div>
+        <div class="schedules-show-plan">
+          <table>
+            <thead>
+              <tr>
+                <th>予定</th>
+                <th></th>
+                <th>開始時間</th>
+                <th></th>
+                <th>終了時間</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @schedule.schedule_plans.each do |schedule_plan| %>
+                <tr>
+                  <td><%= schedule_plan.plan %></td>
+                  <td>:</td>
+                  <td><%= schedule_plan.start_time.strftime("%H : %M") %></td>
+                  <td>〜</td>
+                  <td><%= schedule_plan.end_time.strftime("%H : %M") %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="schedules-show-content">
+          <p><%= @schedule.content %></p>
+        </div>
+      </div>
+      <div class="schedules-show-charts col-sm-7">
+        <%= render 'chart' %>
+      </div>
+    </div>
+  </div>
+</div>
