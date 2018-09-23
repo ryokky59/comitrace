@@ -13,7 +13,9 @@
 </div>
 </div>
 <div class="schedule-plan-area col-md-6 col-sm-12">
-
+  <% @schedule.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
     <table>
       <thead>
         <tr>

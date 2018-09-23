@@ -28,7 +28,7 @@ class SchedulesController < ApplicationController
     color = ["#FF0000", "#FE9A2E", "#F7FE2E", "#0040FF", "#00FF40", "#DF01D7", "#00FFFF", "#8000FF", "#BFFF00", "#045FB4"]
 
     @schedule.schedule_plans.each do |schedule_plan|
-
+      if schedule_plan.start_time.present? || schedule_plan.end_time.present?
       if schedule_plan.start_time > schedule_plan.end_time
         gon.data << 24 * 60 * 60 - (schedule_plan.start_time.to_i - schedule_plan.end_time.to_i)
       else
@@ -36,6 +36,7 @@ class SchedulesController < ApplicationController
       end
       gon.labels << schedule_plan.plan
       gon.bgcolor << color.sample
+    end
     end
 
     render 'new' if @schedule.invalid?

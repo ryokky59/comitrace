@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_follows, source: :followed
   has_many :followers, through: :passive_follows, source: :follower
 
+  validates :profile, length: { in: 1..200 }
+
   mount_uploader :icon, IconUploader
 
   def follow(other_user)
