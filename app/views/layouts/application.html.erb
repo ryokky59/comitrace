@@ -11,7 +11,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <%= link_to 'Comitrace', schedules_top_path %>
+      <h2 class="text-primary"><%= link_to 'Comitrace', schedules_top_path %></h2>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="Comitrace">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,9 +34,9 @@
   <%= yield%>
 </div>
 
-  <footer class="footer py-3">
+  <footer class="footer bg-light py-3">
   <div class="container">
-    <p class="text-muted text-center mb-auto">Comitrace</p>
+    <p class="text-primary text-center mb-auto">Comitrace</p>
   </div>
 </footer>
 

@@ -1,11 +1,17 @@
 body {
   padding-top: 4.5rem;
 }
-.navbar a {
+
+.navbar h2 {
+  font-weight: bold;
+}
+
+.navbar-nav a {
   position: relative;
   display: inline-block;
   transition: .3s;
-  color: #313131;
+  font-weight: bold;
+  color: #6c757d;
 }
 .navbar-nav a::before,
 .navbar-nav a::after {
@@ -14,7 +20,7 @@ body {
   content: '';
   width: 0;
   height: 1px;
-  background-color: black;
+  background-color: #007bff;
   transition: .3s;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -32,7 +38,7 @@ body {
 
 .navbar a:hover {
   text-decoration: none;
-  color: #313131;
+  color: #007bff;
 }
 
 #wrapper {
@@ -44,7 +50,6 @@ body {
 
 .footer {
   width: auto;
-  background-color: #f5f5f5;
 }
 
 .footer .container {

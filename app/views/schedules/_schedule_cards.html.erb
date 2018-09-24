@@ -1,18 +1,18 @@
 <div class="container">
 <div class="row">
   <% @schedules.each do |schedule| %>
-    <div class="schedule-index-card col-lg-4 col-md-6 col-sm-12">
-<div class="card">
+    <div class="schedule-index-card p-0 col-lg-4 col-md-6 col-sm-12">
+<div class="card m-3">
 
-      <div class="card-header">
+      <div class="card-header bg-primary">
         <%= link_to schedule.title, schedule_path(schedule.id) %>
       </div>
       <div class="card-body">
-      <p><%= schedule.content %></p>
+      <p><%= schedule.content.truncate(65) %></p>
     </div>
       <div class="card-footer">
           <% if schedule.user.icon.present? %>
-            <%= image_tag schedule.user.icon, class: "float-right"%>
+            <%= image_tag schedule.user.icon, class: "float-right" %>
           <% else %>
             <%= image_tag asset_path("usericon.png"), class: "float-right" %>
           <% end %>

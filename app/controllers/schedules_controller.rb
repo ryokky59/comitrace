@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:edit, :update, :delete, :show]
+  before_action :set_schedule, only: [:edit, :update, :destroy, :show]
 
   def top
   end
@@ -64,7 +64,9 @@ class SchedulesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @schedule.destroy
+    redirect_to schedules_path
   end
 
   def show
