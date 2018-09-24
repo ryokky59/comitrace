@@ -13,6 +13,9 @@
   font-weight: bold;
   color: #fff;
   position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
   width: 100%;
   height: 100%;
 }
@@ -37,9 +40,14 @@
 .schedule-index-card .card-footer p {
   margin-bottom: 0;
 }
+
 .schedule-index-card .card-footer img {
   width: 20px;
   height: 20px;
+}
+
+.heart-red:before {
+  color: red;
 }
 
 .schedule-index-pagenation {

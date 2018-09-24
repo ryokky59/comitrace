@@ -11,12 +11,23 @@
       <p><%= schedule.content.truncate(65) %></p>
     </div>
       <div class="card-footer">
-          <% if schedule.user.icon.present? %>
-            <%= image_tag schedule.user.icon, class: "float-right" %>
-          <% else %>
-            <%= image_tag asset_path("usericon.png"), class: "float-right" %>
-          <% end %>
-          <p class="float-right">投稿者:<%= link_to schedule.user.name, user_path(id: schedule.user_id) %></p>
+        <div class="user">
+          <p class="float-right">
+            投稿者:
+            <% if schedule.user.icon.present? %>
+              <%= image_tag schedule.user.icon %>
+            <% else %>
+              <%= image_tag asset_path("usericon.png") %>
+            <% end %>
+            <%= link_to schedule.user.name, user_path(id: schedule.user_id) %>
+          </p>
+        </div>
+          <div class="favorite">
+            <p class="float-left">
+              <i class="fa fa-heart heart-red"></i>
+              : <%= schedule.favorites.count %>
+            </p>
+          </div>
       </div>
     </div>
     </div>
