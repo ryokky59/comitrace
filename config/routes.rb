@@ -24,5 +24,4 @@ Rails.application.routes.draw do
 
   resources :follows, only: [:create, :destroy]
 
-  mount LetterOpenerWeb::Engine, at: "/letter_opener"
 end
