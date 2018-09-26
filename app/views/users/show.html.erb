@@ -41,6 +41,7 @@
 
       <div class="chart col-sm-7">
         <% if @user.schedule_id.present? %>
+        <h4 class="font-weight-bold text-center p-3"><%= link_to @schedule.title, schedule_path(id: @schedule.id) %></h4>
         <%= render 'schedules/chart' %>
         <% end %>
       </div>

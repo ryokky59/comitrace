@@ -2,13 +2,11 @@
   <%= render partial: 'schedule_content' %>
 
   </div>
-  </div>
-</div>
+
 
   <div class="schedules-show-comments text-center">
     <%= render partial: 'comments/form', locals: { comment: @comment, schedule: @schedule } %>
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule } %>
   </div>
-</div>
 </div>

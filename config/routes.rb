@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
   }
 
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:show] do
     member do
       get :following, :followers, :favorite_stocks, :create_stocks
       patch :schedule_trace
