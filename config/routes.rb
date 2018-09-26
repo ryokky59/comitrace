@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   root 'schedules#top'
   devise_for :users, controllers: {
         registrations: 'users/registrations'
-      }
+  }
 
   resources :users, only: [:index, :show] do
     member do
       get :following, :followers, :favorite_stocks, :create_stocks
-      patch :schedule_choise
+      patch :schedule_trace
     end
   end
 

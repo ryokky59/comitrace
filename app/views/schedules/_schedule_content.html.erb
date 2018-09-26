@@ -1,11 +1,11 @@
 <div class="schedules-show">
   <div class="container">
     <div class="row">
-      <div class="schedule-show-contents col-md-6 col-sm-12">
+      <div class="schedule-show-contents col-md-5 col-sm-12">
         <div class="schedules-show-title">
-          <p><%= @schedule.title %></p>
+          <h4 class="font-weight-bold mb-3"><%= @schedule.title %></h4>
         </div>
-        <div class="schedules-show-plan">
+        <div class="schedules-show-plan text-center">
           <table>
             <thead>
               <tr>
@@ -33,8 +33,28 @@
           <p><%= @schedule.content %></p>
         </div>
       </div>
-      <div class="schedules-show-charts col-md-6 col-sm-12">
+      <div class="schedules-show-charts col-md-7 col-sm-12">
         <%= render 'chart' %>
+        <div class="btn pt-3">
+          <% if current_user.schedule_id == @schedule.id %>
+            <p class="btn btn-primary disabled fa fa-check fa-2x">選択中</p>
+          <% else %>
+            <%= link_to 'Trace', schedule_trace_user_path(id: @schedule.id), method: :patch, class: "btn btn-primary fa fa-check fa-2x" %>
+          <% end %>
+        <div id="favorite_btn" class="favorite d-inline-block m-3">
+          <%= render partial: 'favorite_btn', locals: { schedule: @schedule } %>
+        </div>
+        <div class="edit d-inline-block m-2">
+          <% if current_user.id == @schedule.user_id %>
+            <%= link_to '編集', edit_schedule_path(id: @schedule.id), class: 'btn btn-outline-secondary' %>
+            <%= link_to '削除', schedule_path(id: @schedule.id), method: :delete, class: 'btn btn-outline-secondary' %>
+          <% end %>
+        <div id="schedule_trace_btn" class="trace d-inline-block m-2">
+
+      </div>
+
+        </div>
+      </div>
       </div>
     </div>
   </div>

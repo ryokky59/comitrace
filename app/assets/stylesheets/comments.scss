@@ -3,3 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // _index
+.comment-content {
+    margin: 20px 100px;
+    background: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+.comment-content .comment-info {
+    font-size: 1.2em;
+    background: rgba(0, 0, 0, 0.22);
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+.comment-content p {
+    padding: 15px 20px;
+    margin: 0;
+}

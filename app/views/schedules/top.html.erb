@@ -1,1 +1,30 @@
-<h1>トップ</h1>
+<div class="top">
+  <div class="container">
+    <div class="row">
+      <div class="first-left p-5 col-md-6 col-sm-12">
+        <h1>Comitrace</h1>
+        <p>このアプリはあなたの目標達成の手助けをします。</p>
+        <p>目標はあるけど、どう行動すればいいのかわからない、</p>
+        <p>今の努力が正しいのかわからないなんて事ありませんか？</p>
+      </div>
+      <div class="first-right p-5 col-md-6 col-sm-12">
+        <%= image_tag asset_path("top1.png") %>
+        <%= image_tag asset_path("top2.png") %>
+      </div>
+    </div>
+      <div class="row">
+        <div class="second-left p-5 col-md-6 col-sm-12">
+          <%= image_tag asset_path("top3.png") %>
+          <%= image_tag asset_path("top4.png") %>
+        </div>
+        <div class="second-right p-5 col-md-6 col-sm-12">
+          <p>ここには有名大学に合格した人や、スポーツの大会に優勝した人などの</p>
+          <p>一日のスケジュールが公開されています。</p>
+          <p>そのスケジュールを自分のものにして、目標達成への地図にしていきましょう！</p>
+        </div>
+      </div>
+    </div>
+    <div class="third p-5 text-center">
+      <%= link_to "いますぐ無料で初める", new_user_registration_path, class: "btn btn-danger" %>
+    </div>
+  </div>

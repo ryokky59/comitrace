@@ -1,19 +1,6 @@
 <div class="schedules-show">
   <%= render partial: 'schedule_content' %>
-    <div id="favorite_btn" class="schedules-show-favorite">
-      <%= render partial: 'favorite_btn', locals: { schedule: @schedule } %>
-    </div>
-    <div id="schedule_choise_btn" class="schedules-show-choise">
-    <% if current_user.schedule_id == @schedule.id %>
-      <p class="btn btn-info disabled">選択中</p>
-    <% else %>
-      <%= link_to '選ぶ', schedule_choise_user_path(id: @schedule.id), method: :patch, class: 'btn btn-info' %>
-    <% end %>
-    <% if current_user.id == @schedule.user_id %>
-      <%= link_to '編集', edit_schedule_path(id: @schedule.id), class: 'btn btn-warning' %>
-      <%= link_to '削除', schedule_path(id: @schedule.id), method: :delete, class: 'btn btn-danger' %>
-    <% end %>
-    </div>
+
   </div>
   </div>
 </div>

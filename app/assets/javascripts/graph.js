@@ -64,7 +64,7 @@ Chart.plugins.register({
           // 文字のスタイルを変更
           ctx.fillStyle = 'rgb(0, 0, 0)';
 
-          var fontSize = 12;
+          var fontSize = 14;
           var fontStyle = 'normal';
           var fontFamily = 'Helvetica Neue';
           ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);

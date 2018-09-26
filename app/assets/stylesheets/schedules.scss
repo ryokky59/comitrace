@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// top
+.top h1 {
+  color:  #007bff;
+  font-weight: bold;
+}
+.top img {
+  height: 100%;
+  width: 40%;
+}
 // index
 .schedule-index-card .card-header {
   padding: 0px, 10px;
@@ -76,6 +85,9 @@
 
 
 // show
+#chart {
+  margin: 0, auto;
+}
 .schedule-show-contents .user img {
   height: 50px;
   width: 50px;
@@ -90,11 +102,32 @@
 
 
 .chartjs-render-monitor {
-  height: 500px !important;
-  width: 500px !important;
-  text-align: center !important;
+  height: 450px !important;
+  width: 450px !important;
+  display: inline-block !important;
 }
 
 .schedules-show-comments {
   padding: 50px;
+}
+
+// _schedule_content
+.schedules-show-plan th {
+  padding: 10px;
+}
+
+.schedules-show-plan td {
+  padding: 5px 10px;
+}
+
+.schedules-show-content {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  border: solid 3px #007bff;
+  border-radius: 10px;
+}
+
+.schedule-show-charts .btn .trace p {
+  margin: 0, auto;
 }

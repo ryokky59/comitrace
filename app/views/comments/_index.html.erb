@@ -1,11 +1,11 @@
 <div class="comment-index">
 <% comments.reverse.each do |comment| %>
 <% if comment.id.present? %>
+<div class="comment-content">
   <div class="comment-info">
-    <span><%= comment.updated_at.to_s(:db) %></span>
+    <span><%= comment.updated_at.strftime("%Y-%m-%d %H:%M") %></span>
     <span>投稿者:<%= link_to comment.user.name, user_path(id: comment.user_id) %></span>
   </div>
-  <div class="comment-content">
     <p><%= comment.comment %></p>
   </div>
 <% end %>

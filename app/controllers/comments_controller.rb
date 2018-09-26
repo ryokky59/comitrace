@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @schedule = Schedule.find(params[:schedule_id])
     @comment = @schedule.comments.build(comment_params)
     @comment.user_id = current_user.id
-    
+
     respond_to do |format|
       if @comment.save
         format.js { render :index }

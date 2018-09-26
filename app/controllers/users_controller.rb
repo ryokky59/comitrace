@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     @schedules = @user.schedules.order(created_at: :desc).page(params[:page]).per(6)
   end
 
-  def schedule_choise
+  def schedule_trace
     @user  = current_user
     @schedule = Schedule.find(params[:id])
     if @user.update(schedule_id: @schedule.id)
