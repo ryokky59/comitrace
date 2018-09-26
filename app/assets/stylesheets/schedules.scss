@@ -82,16 +82,15 @@
   letter-spacing: 0.1rem;
 }
 
-
+.schedule-plan-area p {
+  font-size: 0.8rem;
+  color: red;
+  margin: 0;
+}
 
 // show
 #chart {
   margin: 0, auto;
-}
-.schedule-show-contents .user img {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
 }
 
 .schedules-show-content p {

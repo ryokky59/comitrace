@@ -21,7 +21,7 @@ class SchedulesController < ApplicationController
   def confirm
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
-
+    @user = User.find_by(id: @schedule.user_id)
     gon.data = []
     gon.labels = []
 
