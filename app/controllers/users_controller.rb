@@ -4,18 +4,7 @@ class UsersController < ApplicationController
 
     if @user.schedule_id.present?
       @schedule = Schedule.find(@user.schedule_id)
-      gon.data = []
-      gon.labels = []
-
-      @schedule.schedule_plans.each do |schedule_plan|
-
-        if schedule_plan.start_time > schedule_plan.end_time
-          gon.data << 24 * 60 * 60 - (schedule_plan.start_time.to_i - schedule_plan.end_time.to_i)
-        else
-          gon.data << (schedule_plan.end_time.to_i - schedule_plan.start_time.to_i)
-        end
-        gon.labels << schedule_plan.plan
-      end
+      gon.data, gon.labels = @schedule.time_calc
     end
   end
 

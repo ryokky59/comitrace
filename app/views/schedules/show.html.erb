@@ -3,7 +3,7 @@
 </div>
   <div class="show-btn text-center m-3">
   <% if current_user.schedule_id == @schedule.id %>
-    <p class="btn btn-primary disabled fa fa-check fa-2x">選択中</p>
+    <p class="m-0 btn btn-primary disabled fa fa-check fa-2x">選択中</p>
   <% else %>
     <%= link_to 'Trace', schedule_trace_user_path(id: @schedule.id), method: :patch, class: "btn btn-primary fa fa-check fa-2x" %>
   <% end %>
@@ -17,7 +17,7 @@
   <% end %>
 </div>
 </div>
-  <div class="schedules-show-comments text-center">
+  <div class="show-comments text-center">
     <%= render partial: 'comments/form', locals: { comment: @comment, schedule: @schedule } %>
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule } %>

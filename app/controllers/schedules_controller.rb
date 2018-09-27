@@ -22,20 +22,9 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
     @user = User.find_by(id: @schedule.user_id)
-    gon.data = []
-    gon.labels = []
 
-    @schedule.schedule_plans.each do |schedule_plan|
-      if schedule_plan.start_time.present? || schedule_plan.end_time.present?
-      if schedule_plan.start_time > schedule_plan.end_time
-        gon.data << 24 * 60 * 60 - (schedule_plan.start_time.to_i - schedule_plan.end_time.to_i)
-      else
-        gon.data << (schedule_plan.end_time.to_i - schedule_plan.start_time.to_i)
-      end
-      gon.labels << schedule_plan.plan
-    end
-    end
-
+    gon.data, gon.labels = @schedule.time_calc
+    
     render 'new' if @schedule.invalid?
   end
 
@@ -69,17 +58,7 @@ class SchedulesController < ApplicationController
   def show
     @user = User.find_by(id: @schedule.user_id)
 
-    gon.data = []
-    gon.labels = []
-
-    @schedule.schedule_plans.each do |schedule_plan|
-      if schedule_plan.start_time > schedule_plan.end_time
-        gon.data << 24 * 60 * 60 - (schedule_plan.start_time.to_i - schedule_plan.end_time.to_i)
-      else
-        gon.data << (schedule_plan.end_time.to_i - schedule_plan.start_time.to_i)
-      end
-      gon.labels << schedule_plan.plan
-    end
+    gon.data, gon.labels = @schedule.time_calc
 
     @favorite = current_user.favorites.find_by(schedule_id: @schedule.id)
 

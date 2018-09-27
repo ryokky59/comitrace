@@ -4,24 +4,25 @@
   <%= render partial: "shareds/schedule_error_messages" %>
   <div class="row">
 <div class="schedule-area text-center col-md-6 col-sm-12">
-  <div class="title-form">
-<p>スケジュールタイトル</p>
-<%= f.text_field :title %>
+  <div class="title-form d-inline-block">
+<p>タイトル</p>
+<%= f.text_field :title, maxlength: 30 %>
 </div>
-<div class="content-form">
+<div class="content-form d-inline-block">
   <p>内容</p>
-<%= f.text_area :content %>
+<%= f.text_area :content, maxlength: 300 %>
 </div>
 </div>
-<div class="schedule-plan-area col-md-6 col-sm-12">
+<div class="schedule-plan-area text-center col-md-6 col-sm-12">
   <p>24時間になるように入力してください。</p>
   <p>2つ目以降の開始時間は一つ前の終了時間と同じ時間にしてください。</p>
-  <p>現在、快適な入力フォームになるよう改善中です。</p>
     <table>
       <thead>
         <tr>
-          <th class="text-center">プラン</th>
+          <th class="text-center">予定</th>
+          <th></th>
           <th class="text-center">開始時間</th>
+          <th></th>
           <th class="text-center">終了時間</th>
           <th class="text-center"><%= link_to_add_association '追加', f, :schedule_plans, id: 'add-link', class: "btn btn-sm btn-primary", data: {association_insertion_node: '#schedule_plans', association_insertion_method: 'append'} %></th>
         </tr>
@@ -39,8 +40,8 @@
 
 
 
-<div class="schedule-form-btn text-center">
-<%= f.submit "確認" %>
+<div class="confirm-btn text-center">
+<%= f.submit "確認",  class: "btn btn-primary btn-lg" %>
 </div>
 <% end %>
 

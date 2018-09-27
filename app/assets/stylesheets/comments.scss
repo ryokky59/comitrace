@@ -3,21 +3,43 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // _index
-.comment-content {
-    margin: 20px 100px;
-    background: #f1f1f1;
+.comment-index .contents {
+    margin: 30px 50px;
+    background-color: #f1f1f1;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+    width: 60%;
+
 }
-.comment-content .comment-info {
+.comment-index .info {
     font-size: 1.2em;
-    background: rgba(0, 0, 0, 0.22);
+    background-color: rgba(0, 0, 0, 0.22);
     padding: 4px;
     text-align: center;
     color: #FFF;
     font-weight: bold;
     letter-spacing: 0.05em;
 }
-.comment-content p {
+.comment-index p {
     padding: 15px 20px;
     margin: 0;
+}
+
+// _form
+.comment-form .form {
+  width: 60%;
+  height: 80px;
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.22);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+
+.comment-form .textarea p {
+  font-size: 1.2em;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin: 0 auto;
+}
+.comment-form .textarea textarea {
+  width: 100%;
 }

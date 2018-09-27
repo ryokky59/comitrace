@@ -1,5 +1,7 @@
-<div class="schedule-chart mt-4 text-center">
-<div><%= @schedule.schedule_plans[0].start_time.strftime("%H : %M") %></div>
+<div class="schedule-chart mt-4">
+<div class="top"><%= @schedule.schedule_plans[0].start_time.strftime("%H : %M") %></div>
+<div class="left d-inline-block"><%= @schedule.schedule_plans[0].start_time.strftime("%H : %M") %></div>
   <canvas id="chart" width="100%" height="100%"></canvas>
-<div><%= @schedule.schedule_plans[0].start_time.since(12.hours).strftime("%H : %M") %></div>
+<div class="right d-inline-block"><%= @schedule.schedule_plans[0].start_time.strftime("%H : %M") %></div>
+<div class="bottom"><%= @schedule.schedule_plans[0].start_time.since(12.hours).strftime("%H : %M") %></div>
 </div>

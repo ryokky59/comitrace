@@ -55,71 +55,100 @@
   height: 20px;
 }
 
-.heart-red:before {
-  color: red;
-}
+
 
 .schedule-index-pagenation {
   margin: 20px;
 }
 
-// new
+// show
+.show-comments {
+  padding: 50px;
+}
+
+// _form
 .schedule-form .container {
   margin-bottom: 50px;
 }
-.schedule-area .title-form input {
-  width: 20rem;
+
+.schedule-form .title-form {
+  background-color: #007bff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 80%;
+  margin: 20px 0px;
+}
+
+.schedule-form .title-form p {
+  margin : 0 auto;
+  color : #fff;
+}
+
+.schedule-form .title-form input {
+  margin: 0 auto;
+  width: 100%;
+  font-size: 1.3rem;
   letter-spacing: 0.1rem;
 }
 
-.schedule-area .content-form textarea {
-  width: 20rem;
-  height: 15rem;
-  letter-spacing: 0.1rem;
+.schedule-form .content-form {
+  background-color: #007bff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 80%;
+  height: 299px;
+  margin: 40px auto;
 }
 
-.schedule-plan-area .nested-fields input {
-  letter-spacing: 0.1rem;
+.schedule-form .content-form p {
+  margin : 0 auto;
+  color : #fff;
 }
 
-.schedule-plan-area p {
+.schedule-form .content-form textarea {
+  margin: 0 auto;
+  width: 100%;
+  height: 300px;
+  font-size: 1.3rem;
+  letter-spacing: 0.2rem;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+}
+
+.schedule-form .schedule-plan-area p {
   font-size: 0.8rem;
   color: red;
   margin: 0;
 }
 
-// show
-#chart {
-  margin: 0, auto;
+.schedule-form .confirm-btn {
+  margin: 30px;
 }
 
-.schedules-show-content p {
-  word-wrap: break-word;
-  letter-spacing: 0.1rem;
+// _schedule_plan_fields
+.schedule-form .nested-fields td {
+  padding: 5px 10px;
 }
-
-
-
-.chartjs-render-monitor {
-  height: 450px !important;
-  width: 450px !important;
-  display: inline-block !important;
-}
-
-.schedules-show-comments {
-  padding: 50px;
+.schedule-form .nested-fields input {
+  letter-spacing: 0.2rem;
+  font-size: 1.1rem;
 }
 
 // _schedule_content
-.schedules-show-plan th {
+.schedules-schedule-content .plan {
+  min-height: 350px;
+}
+
+.schedules-schedule-content .plan th {
   padding: 10px;
 }
 
-.schedules-show-plan td {
+.schedules-schedule-content .plan td {
   padding: 5px 10px;
+  border-bottom: solid 2px #b0c4de;
 }
 
-.schedules-show-content {
+.schedules-schedule-content .content {
   padding: 0.5em 1em;
   margin: 2em 0;
   font-weight: bold;
@@ -127,6 +156,32 @@
   border-radius: 10px;
 }
 
-.schedule-show-charts .btn .trace p {
-  margin: 0, auto;
+.schedules-schedule-content .content p {
+  word-wrap: break-word;
+  letter-spacing: 0.1rem;
+}
+
+// _chart
+.schedule-chart {
+
+}
+.chartjs-render-monitor {
+  height: 450px !important;
+  width: 450px !important;
+  display: inline-block !important;
+}
+
+.schedule-chart .top {
+  margin-left: 255px;
+}
+
+.schedule-chart .left {
+}
+
+.schedule-chart .right {
+
+}
+
+.schedule-chart .bottom {
+  margin-left: 255px;
 }

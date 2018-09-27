@@ -1,14 +1,14 @@
-<div class="schedules-show">
+<div class="schedules-schedule-content">
   <div class="container">
     <div class="row">
-      <div class="schedule-show-contents col-md-5 col-sm-12">
-        <div class="schedules-show-title">
+      <div class="contents col-md-5 col-sm-12">
+        <div class="title">
           <h4 class="font-weight-bold mb-3"><%= @schedule.title %></h4>
         </div>
-        <div class="schedule-show-user">
+        <div class="user">
           <p>作成者 : <%= link_to @user.name, user_path(id:@user.id) %></p>
         </div>
-        <div class="schedules-show-plan text-center">
+        <div class="plan text-center">
           <table>
             <thead>
               <tr>
@@ -32,11 +32,11 @@
             </tbody>
           </table>
         </div>
-        <div class="schedules-show-content">
+        <div class="content">
           <p><%= @schedule.content %></p>
         </div>
       </div>
-      <div class="schedules-show-charts col-md-7 col-sm-12">
+      <div class="charts col-md-7 col-sm-12">
         <%= render 'chart' %>
       </div>
       </div>
