@@ -53,9 +53,9 @@
 .schedule-index-card .card-footer img {
   width: 20px;
   height: 20px;
+  border-radius: 50%;
+  border: 0.5px #6c757d solid;
 }
-
-
 
 .schedule-index-pagenation {
   margin: 20px;
@@ -163,7 +163,7 @@
 
 // _chart
 .schedule-chart {
-
+  position: relative;
 }
 .chartjs-render-monitor {
   height: 450px !important;
@@ -176,10 +176,14 @@
 }
 
 .schedule-chart .left {
+  position: absolute;
+  top: 50%;
+
 }
 
 .schedule-chart .right {
-
+  position: absolute;
+  top: 50%;
 }
 
 .schedule-chart .bottom {

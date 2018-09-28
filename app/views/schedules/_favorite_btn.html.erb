@@ -1,9 +1,8 @@
 <% unless schedule.user_id == current_user.id %>
 <% if @favorite.present? %>
-<%= link_to 'いいね', favorite_path(id: @favorite.id), method: :delete, remote: true, class: 'btn btn-danger fa fa-heart color-white fa-2x' %>
-
+<%= link_to 'はずす', favorite_path(id: @favorite.id), method: :delete, remote: true, class: "btn btn-outline-danger fa fa-heart-o color-red fa-2x" %>
 <% else %>
-<%= link_to 'はずす', favorites_path(schedule_id: @schedule.id), method: :post, remote: true, class: 'btn btn-outline-danger fa fa-heart-o color-red fa-2x' %>
+<%= link_to 'いいね', favorites_path(schedule_id: @schedule.id), method: :post, remote: true, class: "btn btn-danger fa fa-heart color-white fa-2x" %>
 
 <% end %>
 <% end %>

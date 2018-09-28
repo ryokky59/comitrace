@@ -2,7 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// show
+.users-show .icon img {
+  width: 100px;
+  height: 100px;
+  border-radius:50%;
+  border: 1.5px #6c757d solid;
+}
+
+.users-show .name p {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.users-show .profile {
+  border: solid 1.5px #6c757d;
+  border-radius: 10px;
+  width: 50%;
+}
+
+.users-show .profile p {
+  font-size: 1.2rem;
+  word-wrap: break-word;
+  letter-spacing: 0.1rem;
+  margin: 5px;
+}
+
+.users-show .favorite {
+  margin: 10px;
+}
+
+.users-show .favorite a {
+  color: #6c757d;
+}
+
+.users-show .favorite a:hover {
+  text-decoration: none;
+  color: red;
+  font-weight: bold;
+}
 // follow_link
+.users-follow-link a {
+  font-weight: bold;
+  color: #6c757d;
+}
+
 .users-follow-link a:hover {
   text-decoration: none;
+  color: #007bff;
 }
