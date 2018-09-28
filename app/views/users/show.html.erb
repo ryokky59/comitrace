@@ -25,18 +25,18 @@
           <p><%= @user.profile %></p>
         </div>
           <% end %>
+          <div class="create">
+            <a href="<%= create_stocks_user_path %>">
+              <i class="material-icons md-18 align-text-bottom">watch_later</i>
+              作成スケジュール : <%= @user.schedules.count %>
+            </a>
+          </div>
           <div class="favorite">
             <a href="<%= favorite_stocks_user_path %>">
               <i class="fa fa-heart"></i>
               いいね : <%= @user.favorites.count %>
             </a>
           </div>
-        <div class="create">
-          <a href="<%= create_stocks_user_path %>">
-            <i class="fa fa-watch" aria-hidden="true"></i>
-            作成スケジュール : <%= @user.schedules.count %>
-          </a>
-        </div>
         <% if current_user.id == @user.id %>
           <div class="edit m-2">
             <%= link_to "アカウント編集", edit_user_registration_path, class: "btn btn-outline-secondary btn-sm" %>
@@ -51,7 +51,8 @@
 
       <div class="chart col-sm-7">
         <% if @user.schedule_id.present? %>
-        <h4 class="font-weight-bold text-center p-3"><%= link_to @schedule.title, schedule_path(id: @schedule.id) %></h4>
+
+        <h4 class="font-weight-bold p-4 ml-4"><i class="material-icons md-36 align-middle">watch_later</i>: <%= link_to @schedule.title, schedule_path(id: @schedule.id) %></h4>
         <%= render 'schedules/chart' %>
         <% end %>
       </div>

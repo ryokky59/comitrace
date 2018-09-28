@@ -16,6 +16,7 @@
 }
 
 .users-show .profile {
+  margin: 30px;
   border: solid 1.5px #6c757d;
   border-radius: 10px;
   width: 50%;
@@ -28,8 +29,22 @@
   margin: 5px;
 }
 
+.users-show .create {
+  margin: 20px;
+}
+
+.users-show .create a {
+  color: #6c757d;
+}
+
+.users-show .create a:hover {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
 .users-show .favorite {
-  margin: 10px;
+  margin: 20px;
 }
 
 .users-show .favorite a {
@@ -41,6 +56,8 @@
   color: red;
   font-weight: bold;
 }
+
+
 // follow_link
 .users-follow-link a {
   font-weight: bold;
