@@ -1,10 +1,10 @@
 <div id="follow_link" class="users-follow-link d-flex justify-content-center">
 
-<a href="<%= following_user_path(@user) %>" class="m-2">
+<a href="<%= following_user_path(@user) %>" class="m-2" data-remote="true">
 <p><%= @user.following.count %></p>
 フォロー</a>
 
-<a href="<%= followers_user_path(@user) %>" class="m-2">
+<a href="<%= followers_user_path(@user) %>" class="m-2" data-remote="true">
 <p><%= @user.followers.count %></p>
 フォロワー</a>
 

@@ -3,55 +3,55 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // show
-.users-show .icon img {
+.users-show .info .icon img {
   width: 100px;
   height: 100px;
   border-radius:50%;
   border: 1.5px #6c757d solid;
 }
 
-.users-show .name p {
+.users-show .info .name p {
   font-weight: bold;
   font-size: 2rem;
 }
 
-.users-show .profile {
+.users-show .info .profile {
   margin: 30px;
   border: solid 1.5px #6c757d;
   border-radius: 10px;
   width: 50%;
 }
 
-.users-show .profile p {
+.users-show .info .profile p {
   font-size: 1.2rem;
   word-wrap: break-word;
   letter-spacing: 0.1rem;
   margin: 5px;
 }
 
-.users-show .create {
+.users-show .info .create {
   margin: 20px;
 }
 
-.users-show .create a {
+.users-show .info .create a {
   color: #6c757d;
 }
 
-.users-show .create a:hover {
+.users-show .info .create a:hover {
   text-decoration: none;
   color: #007bff;
   font-weight: bold;
 }
 
-.users-show .favorite {
+.users-show .info .favorite {
   margin: 20px;
 }
 
-.users-show .favorite a {
+.users-show .info .favorite a {
   color: #6c757d;
 }
 
-.users-show .favorite a:hover {
+.users-show .info .favorite a:hover {
   text-decoration: none;
   color: red;
   font-weight: bold;

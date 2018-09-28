@@ -1,6 +1,5 @@
 <div class="users-follow-users">
   <% users.each do |user| %>
-  <div class="info">
     <div class="head d-flex justify-content-center">
     <div class="name">
       <h4 class="mx-3"><%= link_to user.name, user_path(user.id) %></h4>
@@ -14,6 +13,6 @@
     <div class="profile">
       <p><%= user.profile %></p>
     </div>
-  </div>
   <% end %>
+  <%= paginate users, remote: true %>
 </div>

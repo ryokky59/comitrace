@@ -10,22 +10,38 @@ class UsersController < ApplicationController
 
   def following
     @user  = User.find(params[:id])
-    @users = @user.following
+    @users = @user.following.order(created_at: :desc).page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.js { render :following }
+    end
   end
 
   def followers
     @user  = User.find(params[:id])
-    @users = @user.followers
-  end
+    @users = @user.followers.order(created_at: :desc).page(params[:page]).per(10)
 
-  def favorite_stocks
-    @user = User.find(params[:id])
-    @schedules = @user.favorite_schedules.order(created_at: :desc).page(params[:page]).per(6)
+    respond_to do |format|
+      format.js { render :followers }
+    end
   end
 
   def create_stocks
     @user  = User.find(params[:id])
     @schedules = @user.schedules.order(created_at: :desc).page(params[:page]).per(6)
+
+    respond_to do |format|
+      format.js { render :create_stocks }
+    end
+  end
+
+  def favorite_stocks
+    @user = User.find(params[:id])
+    @schedules = @user.favorite_schedules.order(created_at: :desc).page(params[:page]).per(6)
+
+    respond_to do |format|
+      format.js { render :favorite_stocks }
+    end
   end
 
   def schedule_trace

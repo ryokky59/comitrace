@@ -26,13 +26,13 @@
         </div>
           <% end %>
           <div class="create">
-            <a href="<%= create_stocks_user_path %>">
+            <a href="<%= create_stocks_user_path %>" data-remote="true">
               <i class="material-icons md-18 align-text-bottom">watch_later</i>
               作成スケジュール : <%= @user.schedules.count %>
             </a>
           </div>
           <div class="favorite">
-            <a href="<%= favorite_stocks_user_path %>">
+            <a href="<%= favorite_stocks_user_path %>" data-remote="true">
               <i class="fa fa-heart"></i>
               いいね : <%= @user.favorites.count %>
             </a>
@@ -45,16 +45,10 @@
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
           </div>
           <% end %>
-
-
       </div>
-
-      <div class="chart col-sm-7">
-        <% if @user.schedule_id.present? %>
-
-        <h4 class="font-weight-bold p-4 ml-4"><i class="material-icons md-36 align-middle">watch_later</i>: <%= link_to @schedule.title, schedule_path(id: @schedule.id) %></h4>
-        <%= render 'schedules/chart' %>
-        <% end %>
+      <div class="contents col-sm-7">
+        <div id="content">
+        </div>
       </div>
     </div>
   </div>
