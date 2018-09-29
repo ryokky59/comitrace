@@ -7,17 +7,24 @@
   color:  #007bff;
   font-weight: bold;
 }
+
 .top img {
   height: 100%;
   width: 40%;
 }
+
 // index
-.schedule-index-card .card-header {
+.schedule-card .card {
+  width: 300px;
+}
+
+.schedule-card .card-header {
   padding: 0px, 10px;
   height: 50px;
   position: relative;
 }
-.schedule-index-card .card-header a {
+
+.schedule-card .card-header a {
   font-size: 1.2rem;
   font-weight: bold;
   color: #fff;
@@ -29,35 +36,35 @@
   height: 100%;
 }
 
-.schedule-index-card .card-header a:hover {
+.schedule-card .card-header a:hover {
   text-decoration: none;
 }
 
-.schedule-index-card .card-body {
+.schedule-card .card-body {
   height: 200px;
 }
 
-.schedule-index-card .card-body p {
+.schedule-card .card-body p {
   font-size: 1.2rem;
   letter-spacing: 3px;
 }
 
-.schedule-index-card .card-footer {
-    height: 45px;
+.schedule-card .card-footer {
+  height: 45px;
 }
 
-.schedule-index-card .card-footer p {
+.schedule-card .card-footer p {
   margin-bottom: 0;
 }
 
-.schedule-index-card .card-footer img {
+.schedule-card .card-footer img {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   border: 0.5px #6c757d solid;
 }
 
-.schedule-index-pagenation {
+.schedule-cards-pagenation {
   margin: 20px;
 }
 
@@ -162,13 +169,10 @@
 }
 
 // _chart
-.schedule-chart {
-
-}
 
 .chartjs-render-monitor {
-  height: 450px !important;
-  width: 450px !important;
+  max-height: 375px !important;
+  max-width: 375px !important;
   display: inline-block !important;
 }
 
@@ -177,8 +181,8 @@
 }
 
 .schedule-chart .left p {
-  padding-top: 236px;
-  margin-right: 5px;
+  padding-top: 200px;
+  margin-right: -95px;
   font-weight: bold;
 }
 
@@ -188,7 +192,6 @@
 
 .schedule-chart .center p {
   margin: 0px;
-  padding-left: 197px;
   font-weight: bold;
 }
 
@@ -197,7 +200,7 @@
 }
 
 .schedule-chart .right p {
-  padding-top: 236px;
-  margin-left: 10px;
+  padding-top: 200px;
+  margin-left: -95px;
   font-weight: bold;
 }

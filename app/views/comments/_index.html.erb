@@ -1,5 +1,5 @@
 <div class="comment-index">
-<% comments.reverse.each do |comment| %>
+<% comments.each do |comment| %>
 <% if comment.id.present? %>
 <div class="contents d-inline-block text-center">
   <div class="info">
@@ -10,4 +10,5 @@
   </div>
 <% end %>
 <% end %>
+<%= paginate comments, remote: true %>
 </div>

@@ -17,9 +17,9 @@
   <% end %>
 </div>
 </div>
-  <div class="show-comments text-center">
-    <%= render partial: 'comments/form', locals: { comment: @comment, schedule: @schedule } %>
+<div class="show-comments text-center">
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule } %>
   </div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, schedule: @schedule } %>
 </div>

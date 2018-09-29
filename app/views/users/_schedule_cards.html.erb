@@ -1,7 +1,7 @@
 <div class="container">
 <div class="row">
   <% @schedules.each do |schedule| %>
-    <div class="schedule-card p-0 col-lg-4 col-md-6 col-sm-12">
+    <div class="schedule-card p-0 col-lg-6 col-md-12">
 <div class="card m-3">
 
       <div class="card-header bg-primary">
@@ -35,5 +35,5 @@
     </div>
   </div>
 <div class="schedule-cards-pagenation">
-<%= paginate @schedules %>
+<%= paginate @schedules, remote: true %>
 </div>

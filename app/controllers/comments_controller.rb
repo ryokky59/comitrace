@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
     @schedule = Schedule.find(params[:schedule_id])
     @comment = @schedule.comments.build(comment_params)
     @comment.user_id = current_user.id
+    @comments = @schedule.comments.order(created_at: :desc).page(params[:page]).per(5)
 
     respond_to do |format|
       if @comment.save

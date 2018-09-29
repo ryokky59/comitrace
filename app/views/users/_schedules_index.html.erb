@@ -1,9 +1,8 @@
 <div class="container">
   <div class="row">
-    <% schedules.each do |schedule| %>
+    <% @schedules.each do |schedule| %>
       <div class="schedule-index-card col-md-6 col-sm-12">
         <div class="card">
-
         <div class="card-header">
           <%= link_to schedule.title, schedule_path(schedule.id) %>
         </div>
@@ -24,6 +23,6 @@
       </div>
     </div>
 <div class="schedule-index-pagenation">
-<%= paginate schedules %>
+<%= paginate @schedules %>
 </div>
 </div>

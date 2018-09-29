@@ -24,7 +24,7 @@ class SchedulesController < ApplicationController
     @user = User.find_by(id: @schedule.user_id)
 
     gon.data, gon.labels = @schedule.time_calc
-    
+
     render 'new' if @schedule.invalid?
   end
 
@@ -62,8 +62,14 @@ class SchedulesController < ApplicationController
 
     @favorite = current_user.favorites.find_by(schedule_id: @schedule.id)
 
-    @comments = @schedule.comments
+    @comments = @schedule.comments.order(created_at: :desc).page(params[:page]).per(5)
     @comment = @schedule.comments.build
+
+    respond_to do |format|
+      format.js {render 'comments/index'}
+      format.html
+    end
+
   end
 
   private
@@ -74,7 +80,5 @@ class SchedulesController < ApplicationController
   def set_schedule
     @schedule = Schedule.find(params[:id])
   end
-
-
 
 end
