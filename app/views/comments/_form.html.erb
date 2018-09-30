@@ -1,14 +1,14 @@
 <div class="comment-form">
-<%= form_with(model: [schedule, comment]) do |f| %>
-<div class="form d-inline-block text-center">
-  <div class="textarea">
-    <p>コメント</p>
-    <%= f.text_area :comment %>
-  </div>
+  <%= form_with(model: [schedule, comment]) do |f| %>
+    <div class="form d-inline-block text-center">
+      <div class="textarea">
+        <p>コメント</p>
+        <%= f.text_area :comment %>
+      </div>
 
-  <div class="btn">
-    <%= f.submit "投稿", class: "btn btn-secondary" %>
-  </div>
-<% end %>
-</div>
+      <div class="btn">
+        <%= f.submit "投稿", class: "btn btn-secondary" %>
+      </div>
+    </div>
+  <% end %>
 </div>

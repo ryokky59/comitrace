@@ -6,7 +6,6 @@ class SchedulesController < ApplicationController
 
   def index
     @schedules = Schedule.order(created_at: :desc).page(params[:page]).per(6)
-    #@schedules = Schedule.all.includes(:schedule_plans)子要素も載せたい時
   end
 
   def new
@@ -31,6 +30,7 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
+
     if @schedule.save
       redirect_to schedule_path(id: @schedule.id)
     else
@@ -69,7 +69,6 @@ class SchedulesController < ApplicationController
       format.js {render 'comments/index'}
       format.html
     end
-
   end
 
   private
@@ -80,5 +79,4 @@ class SchedulesController < ApplicationController
   def set_schedule
     @schedule = Schedule.find(params[:id])
   end
-
 end

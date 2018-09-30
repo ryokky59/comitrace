@@ -18,26 +18,25 @@
       <div class="collapse navbar-collapse justify-content-end" id="Navber">
         <ul class="navbar-nav">
           <% if user_signed_in? %>
-          <li class="nav-item nav-link"><%= link_to 'スケジュール一覧', schedules_path %></li>
-          <li class="nav-item nav-link"><%= link_to 'スケジュール作成', new_schedule_path %></li>
-          <li class="nav-item nav-link"><%= link_to 'マイページ', user_path(current_user.id) %></li>
+            <li class="nav-item nav-link"><%= link_to 'スケジュール一覧', schedules_path %></li>
+            <li class="nav-item nav-link"><%= link_to 'スケジュール作成', new_schedule_path %></li>
+            <li class="nav-item nav-link"><%= link_to 'マイページ', user_path(current_user.id) %></li>
           <% else %>
-          <li class="nav-item nav-link"><%= link_to 'ログイン', new_user_session_path %></li>
-          <li class="nav-item nav-link"><%= link_to 'サインアップ', new_user_registration_path %></li>
+            <li class="nav-item nav-link"><%= link_to 'ログイン', new_user_session_path %></li>
+            <li class="nav-item nav-link"><%= link_to 'サインアップ', new_user_registration_path %></li>
           <% end %>
         </ul>
       </div>
     </nav>
 
-<div id="wrapper" class="mt-5">
-  <%= yield%>
-</div>
+    <div id="wrapper" class="mt-5">
+      <%= yield%>
+    </div>
 
-  <footer class="footer bg-light py-3">
-  <div class="container">
-    <p class="text-primary text-center mb-auto">Comitrace</p>
-  </div>
-</footer>
-
+    <footer class="footer bg-light py-3">
+      <div class="container">
+        <p class="text-primary text-center mb-auto">Comitrace</p>
+      </div>
+    </footer>
   </body>
 </html>

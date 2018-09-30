@@ -3,6 +3,7 @@ class FavoritesController < ApplicationController
   def create
     @favorite = current_user.favorites.create(schedule_id: params[:schedule_id])
     @schedule = Schedule.find(params[:schedule_id])
+
     respond_to do |format|
       if @favorite.save
         format.js
@@ -15,6 +16,7 @@ class FavoritesController < ApplicationController
   def destroy
     favorite = current_user.favorites.find_by(id: params[:id])
     @schedule = favorite.schedule
+    
     respond_to do |format|
       if favorite.destroy
         format.js

@@ -2,12 +2,15 @@
   <div class="container">
     <div class="row">
       <div class="contents col-md-4 col-sm-12">
+
         <div class="title">
           <h4 class="font-weight-bold mb-3"><%= @schedule.title %></h4>
         </div>
+
         <div class="user">
           <p>作成者 : <%= link_to @user.name, user_path(id:@user.id) %></p>
         </div>
+
         <div class="plan text-center">
           <table>
             <thead>
@@ -32,13 +35,16 @@
             </tbody>
           </table>
         </div>
+
         <div class="content">
           <p><%= @schedule.content %></p>
         </div>
+
       </div>
+
       <div class="charts p-0 col-md-8 col-sm-12">
         <%= render 'chart' %>
       </div>
-      </div>
     </div>
   </div>
+</div>

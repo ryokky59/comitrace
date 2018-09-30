@@ -1,39 +1,45 @@
 <div class="container">
-<div class="row">
-  <% @schedules.each do |schedule| %>
-    <div class="schedule-card p-0 col-lg-4 col-md-6 col-sm-12">
-<div class="card m-3">
+  <div class="row">
+    <% @schedules.each do |schedule| %>
+      <div class="schedule-card p-0 col-lg-4 col-md-6 col-sm-12">
 
-      <div class="card-header bg-primary">
-        <%= link_to schedule.title, schedule_path(schedule.id) %>
-      </div>
-      <div class="card-body">
-      <p><%= schedule.content.truncate(65) %></p>
-    </div>
-      <div class="card-footer">
-        <div class="user">
-          <p class="float-right">
-            投稿者:
-            <% if schedule.user.icon.present? %>
-              <%= image_tag schedule.user.icon %>
-            <% else %>
-              <%= image_tag asset_path("usericon.png") %>
-            <% end %>
-            <%= link_to schedule.user.name, user_path(id: schedule.user_id) %>
-          </p>
-        </div>
-          <div class="favorite">
-            <p class="float-left">
-              <i class="fa fa-heart color-red"></i>
-              : <%= schedule.favorites.count %>
-            </p>
+        <div class="card m-3">
+
+          <div class="card-header bg-primary">
+            <%= link_to schedule.title, schedule_path(schedule.id) %>
           </div>
+
+          <div class="card-body">
+            <p><%= schedule.content.truncate(65) %></p>
+          </div>
+
+          <div class="card-footer">
+            <div class="user">
+              <p class="float-right">
+                投稿者:
+                <% if schedule.user.icon.present? %>
+                  <%= image_tag schedule.user.icon %>
+                <% else %>
+                  <%= image_tag asset_path("usericon.png") %>
+                <% end %>
+                <%= link_to schedule.user.name, user_path(id: schedule.user_id) %>
+              </p>
+            </div>
+            <div class="favorite">
+              <p class="float-left">
+                <i class="fa fa-heart color-red"></i>
+                : <%= schedule.favorites.count %>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-    </div>
-    </div>
     <% end %>
-    </div>
   </div>
+</div>
+
 <div class="schedule-cards-pagenation">
-<%= paginate @schedules %>
+  <%= paginate @schedules %>
 </div>
