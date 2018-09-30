@@ -18,10 +18,9 @@
           <p><%= user.profile.truncate(60) %></p>
         <% end %>
       </div>
-      <div class="form text-center p-2 col-xs-12 col-sm-2">
-        <% unless user.id == current_user.id %>
-          <%= render 'follow_form', user: user %>
-        <% end %>
+      <div class="count text-center p-2 col-xs-12 col-sm-2">
+        <p><i class="material-icons md-18 align-text-bottom">watch_later</i> : <%= user.schedules.count %></p>
+        <p><i class="fa fa-heart"></i> : <%= user.favorites.count %></p>
       </div>
     </div>
   <% end %>
