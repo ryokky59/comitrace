@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-#  belongs_to :schedule スケジュールと一対多にするとサインアップで引っかかる
   has_many :schedules, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -30,5 +29,4 @@ class User < ApplicationRecord
   def unfollow(other_user)
     active_follows.find_by(followed_id: other_user.id).destroy
   end
-
 end

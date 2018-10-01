@@ -1,8 +1,7 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:edit, :update, :destroy, :show]
 
-  def top
-  end
+  def top; end
 
   def index
     @schedules = Schedule.order(created_at: :desc).page(params[:page]).per(6)
@@ -66,7 +65,7 @@ class SchedulesController < ApplicationController
     @comment = @schedule.comments.build
 
     respond_to do |format|
-      format.js {render 'comments/index'}
+      format.js { render 'comments/index' }
       format.html
     end
   end

@@ -7,7 +7,7 @@ class Schedule < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :user
 
   validates :title, length: { in: 1..30 }
-  validates :content, length: { in: 1..300}
+  validates :content, length: { in: 1..300 }
 
   def time_calc
     data = []
@@ -22,5 +22,4 @@ class Schedule < ApplicationRecord
     end
     return [data, labels]
   end
-
 end

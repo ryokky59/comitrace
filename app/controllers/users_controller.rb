@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @users = @user.following.order(created_at: :desc).page(params[:page]).per(10)
 
     respond_to do |format|
-      format.js { render :following }
+      format.js
     end
   end
 
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @users = @user.followers.order(created_at: :desc).page(params[:page]).per(10)
 
     respond_to do |format|
-      format.js { render :followers }
+      format.js
     end
   end
 
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @schedules = @user.schedules.order(created_at: :desc).page(params[:page]).per(6)
 
     respond_to do |format|
-      format.js { render :create_stocks }
+      format.js
     end
   end
 
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @schedules = @user.favorite_schedules.order(created_at: :desc).page(params[:page]).per(6)
 
     respond_to do |format|
-      format.js { render :favorite_stocks }
+      format.js
     end
   end
 
