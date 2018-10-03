@@ -23,11 +23,17 @@
         <% end %>
       </div>
 
-      <div class="count text-center p-2 col-xs-12 col-sm-2">
+      <div class="icon text-center p-2 col-xs-12 col-sm-2">
         <p><i class="material-icons md-18 align-text-bottom">watch_later</i> : <%= user.schedules.count %></p>
         <p><i class="fa fa-heart"></i> : <%= user.favorites.count %></p>
       </div>
 
+      <div class="trace">
+        <p>
+          <i class="fa fa-check"></i>実行中のスケジュール : </span>
+          <%= link_to user.trace_schedule_title, schedule_path(id: user.schedule_id) if user.schedule_id.present? %>
+        </p>
+      </div>
     </div>
   <% end %>
   <%= paginate users, remote: true %>

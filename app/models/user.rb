@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def unfollow(other_user)
     active_follows.find_by(followed_id: other_user.id).destroy
   end
+
+   def trace_schedule_title
+     Schedule.find_by(id: self.schedule_id).title if self.schedule_id.present?
+   end
 end

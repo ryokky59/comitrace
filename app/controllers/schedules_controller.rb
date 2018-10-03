@@ -29,7 +29,7 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
-
+    
     if @schedule.save
       redirect_to schedule_path(id: @schedule.id)
     else
