@@ -14,7 +14,7 @@
   <div class="edit d-inline-block m-2">
     <% if current_user.id == @schedule.user_id %>
       <%= link_to '編集', edit_schedule_path(id: @schedule.id), class: "btn btn-outline-secondary" %>
-      <%= link_to '削除', schedule_path(id: @schedule.id), method: :delete, class: "btn btn-outline-secondary" %>
+      <%= link_to '削除', schedule_path(id: @schedule.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: "btn btn-outline-secondary" %>
     <% end %>
   </div>
 </div>

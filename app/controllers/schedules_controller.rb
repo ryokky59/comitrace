@@ -40,7 +40,7 @@ class SchedulesController < ApplicationController
   end
 
   def edit
-    @schedule.user_id = current_user.id
+    redirect_to schedules_path unless @schedule.user_id == current_user.id
   end
 
   def update
@@ -53,7 +53,7 @@ class SchedulesController < ApplicationController
 
   def destroy
     @schedule.destroy
-    redirect_to schedules_path
+    redirect_to schedules_path, notice: "スケジュールを削除しました"
   end
 
   def show

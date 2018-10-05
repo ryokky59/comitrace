@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :following, :followers, :create_stocks, :favorite_stocks]
 
   def show
-    if @user.schedule_id.present?
+    if @user.schedule_id.present? 
       @schedule = Schedule.find(@user.schedule_id)
       gon.data, gon.labels = @schedule.time_calc
     end
