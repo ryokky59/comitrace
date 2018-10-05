@@ -30,7 +30,7 @@
     </nav>
 
     <div id="wrapper" class="mt-5">
-      <%= yield%>
+      <%= yield %>
     </div>
 
     <footer class="footer bg-light py-3">
@@ -38,5 +38,13 @@
         <p class="text-primary text-center mb-auto">Comitrace</p>
       </div>
     </footer>
+
+    <% flash.each do |type, msg| %>
+      <% type = 'info' if type == 'notice' %>
+      <% type = 'error' if type == 'alert' %>
+      <script>
+        toastr['<%= type %>']('<%= msg %>')
+      </script>
+    <% end %>
   </body>
 </html>

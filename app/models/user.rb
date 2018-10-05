@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  validates :name, presence: true, uniqueness: true
+  validates :profile, length: { maximum: 200 }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -12,9 +15,6 @@ class User < ApplicationRecord
   has_many :passive_follows, foreign_key: 'followed_id', class_name: 'Follow', dependent: :destroy
   has_many :following, through: :active_follows, source: :followed
   has_many :followers, through: :passive_follows, source: :follower
-
-  validates :name, presence: true
-  validates :profile, length: { maximum: 200 }
 
   mount_uploader :icon, IconUploader
 

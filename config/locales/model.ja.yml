@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+      schedule: "スケジュール"
+      schedule_plan: "スケジュール予定"
+      favorite: "いいね"
+      follow: "フォロー"
+      comment: "コメント"
+    attributes:
+      user:
+        icon: "アイコン"
+        name: "名前"
+        profile: "プロフィール"
+        email: "メールアドレス"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
+      schedule:
+        title: "タイトル"
+        content: "内容"
+        plan: "予定"
+        start_time: "開始時間"
+        end_time: "終了時間"
+      schedule_plan:
+        plan: "予定"
+        start_time: "開始時間"
+        end_time: "終了時間"
+      comment:
+        comment: "コメント"

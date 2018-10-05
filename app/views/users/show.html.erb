@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="info text-center col-sm-4">
-        
+
         <div class="icon">
           <% if @user.icon.present? %>
             <%= image_tag @user.icon %>
@@ -34,7 +34,7 @@
           <div class="trace">
             <a href="<%= schedule_path(id: @user.schedule_id) if @user.schedule_id.present? %>" >
               <i class="fa fa-check"></i>
-              実行中のスケジュール
+              Trace中のスケジュール
             </a>
           </div>
 

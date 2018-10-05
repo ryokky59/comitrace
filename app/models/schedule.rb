@@ -8,44 +8,57 @@ class Schedule < ApplicationRecord
 
   validates :title, length: { in: 1..30 }
   validates :content, length: { in: 1..300 }
-  validate  :precisely_24hour, :injustice_time
+  validate  :schedule_plans_nil, :injustice_time, :precisely_24hour
+
 
   def time_calc
     data = []
     labels = []
-    schedule_plans.each do |plan|
-      if plan.start_time > plan.end_time
-        data << 24 * 60 * 60 - (plan.start_time.to_i - plan.end_time.to_i)
+    schedule_plans.each do |schedule_plan|
+      if schedule_plan.start_time > schedule_plan.end_time
+        data << 24 * 60 * 60 - (schedule_plan.start_time.to_i - schedule_plan.end_time.to_i)
       else
-        data << plan.end_time.to_i - plan.start_time.to_i
+        data << schedule_plan.end_time.to_i - schedule_plan.start_time.to_i
       end
-      labels << plan.plan
+      labels << schedule_plan.plan
     end
     return [data, labels]
   end
 
-  def precisely_24hour
-    second = 0
-    schedule_plans.each do |plan|
-      if plan.start_time > plan.end_time
-        second += 24 * 60 * 60 - (plan.start_time.to_i - plan.end_time.to_i)
-      else
-        second += plan.end_time.to_i - plan.start_time.to_i
-      end
+  def schedule_plans_nil
+    count = 0
+    schedule_plans.each do |schedule_plan|
+      count += 1
+      errors.add(:plan, "の#{count}番目を入力してください") if schedule_plan.plan.empty?
+      errors.add(:start_time, "の#{count}番目を入力してください") if schedule_plan.start_time.nil?
+      errors.add(:end_time, "の#{count}番目を入力してください") if schedule_plan.end_time.nil?
     end
-    errors.add(:second, ": 時間が24時間ではありません") unless second == 24 * 60 * 60
   end
 
   def injustice_time
-    schedule_plans.each do |plan|
-      if plan.start_time == plan.end_time
+    schedule_plans.each do |schedule_plan|
+      next if schedule_plan.plan.empty? || schedule_plan.start_time.nil? || schedule_plan.end_time.nil?
+      if schedule_plan.start_time == schedule_plan.end_time
         time = 15 * 60 * 60
-      elsif plan.start_time > plan.end_time
-        time = 24 * 60 * 60 - (plan.start_time.to_i - plan.end_time.to_i)
+      elsif schedule_plan.start_time > schedule_plan.end_time
+        time = 24 * 60 * 60 - (schedule_plan.start_time.to_i - schedule_plan.end_time.to_i)
       else
-        time = plan.end_time.to_i - plan.start_time.to_i
+        time = schedule_plan.end_time.to_i - schedule_plan.start_time.to_i
       end
-      errors.add(:time, "#{plan.plan}の時間が不正です") if time >= 15 * 60 * 60
+      errors[:base] << "#{schedule_plan.plan}の時間が不正です" if time >= 15 * 60 * 60
     end
+  end
+
+  def precisely_24hour
+    twentyfour = 0
+    schedule_plans.each do |schedule_plan|
+      next if schedule_plan.start_time.nil? || schedule_plan.end_time.nil?
+      if schedule_plan.start_time > schedule_plan.end_time
+        twentyfour += 24 * 60 * 60 - (schedule_plan.start_time.to_i - schedule_plan.end_time.to_i)
+      else
+        twentyfour += schedule_plan.end_time.to_i - schedule_plan.start_time.to_i
+      end
+    end
+    errors[:base] << "時間が24時間分ではありません" unless twentyfour == 24 * 60 * 60
   end
 end

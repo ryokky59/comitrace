@@ -32,6 +32,9 @@ gem 'gon'
 # Form
 gem 'cocoon'
 
+# Flash Message
+gem 'toastr-rails'
+
 # Pagenation
 gem 'kaminari', '~> 0.17.0'
 

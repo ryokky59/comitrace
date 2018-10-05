@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     @user  = current_user
     @schedule = Schedule.find(params[:id])
     if @user.update(schedule_id: @schedule.id)
-      redirect_to user_path(id: @user.id)
+      redirect_to user_path(id: @user.id), notice: "スケジュールをTraceしました。"
     end
   end
 

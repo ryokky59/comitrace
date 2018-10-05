@@ -21,17 +21,19 @@ class SchedulesController < ApplicationController
     @schedule.user_id = current_user.id
     @user = User.find_by(id: @schedule.user_id)
 
-    gon.data, gon.labels = @schedule.time_calc
-
-    render 'new' if @schedule.invalid?
+    if @schedule.valid?
+      gon.data, gon.labels = @schedule.time_calc
+    else
+      render 'new'
+    end
   end
 
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
-    
+
     if @schedule.save
-      redirect_to schedule_path(id: @schedule.id)
+      redirect_to schedule_path(id: @schedule.id), notice: "スケジュールを投稿しました"
     else
       render 'new'
     end
@@ -43,7 +45,7 @@ class SchedulesController < ApplicationController
 
   def update
     if @schedule.update(schedule_params)
-      redirect_to schedule_path(id: @schedule.id)
+      redirect_to schedule_path(id: @schedule.id), notice: "スケジュールを編集しました"
     else
       render 'edit'
     end
