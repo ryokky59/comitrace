@@ -13,6 +13,7 @@ body {
   font-weight: bold;
   color: #6c757d;
 }
+
 .navbar-nav a::before,
 .navbar-nav a::after {
   position: absolute;
@@ -25,12 +26,15 @@ body {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+
 .navbar-nav a::before {
   top: 0;
 }
+
 .navbar-nav a::after {
   bottom: 0;
 }
+
 .navbar-nav a:hover::before,
 .navbar-nav a:hover::after {
   width: 100%;
@@ -57,5 +61,5 @@ body {
 }
 
 #toast-container {
-  padding-top: 55px;
+  margin-top: 55px;
 }
