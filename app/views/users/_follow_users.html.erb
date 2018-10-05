@@ -31,7 +31,7 @@
       <div class="trace">
         <p>
           <i class="fa fa-check"></i>Trace中のスケジュール : </span>
-          <%= link_to user.trace_schedule_title, schedule_path(id: user.schedule_id) if user.schedule_id.present? %>
+          <%= link_to user.schedule.title, schedule_path(id: user.schedule_id) if user.schedule_id.present? %>
         </p>
       </div>
     </div>
