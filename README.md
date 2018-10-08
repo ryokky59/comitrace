@@ -1,7 +1,7 @@
 # Comitrace
 ====
 
-https://user-images.githubusercontent.com/42271756/46590740-a2609300-caf0-11e8-89e5-283a62d3b0d5.png
+![トップページ](https://user-images.githubusercontent.com/42271756/46590740-a2609300-caf0-11e8-89e5-283a62d3b0d5.png)
 
 ## 概要
 SNS型スケジュール共有アプリです。
