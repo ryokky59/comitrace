@@ -9,10 +9,10 @@
     <% end %>
     <%= render partial: 'schedule_content' %>
     <div class="create-btn text-center m-3">
-      <%= f.submit "登録", class: "btn btn-primary" %>
+      <%= f.submit "投稿", class: "btn btn-primary" %>
     </div>
   <% end %>
-  
+
   <div class="back-btn text-center m-3">
     <%= form_with(model: @schedule, local: true, url: new_schedule_path, method: 'get') do |f| %>
       <%= f.hidden_field :title %>
@@ -22,7 +22,7 @@
         <%= f.hidden_field :start_time %>
         <%= f.hidden_field :end_time %>
       <% end %>
-      <%= f.submit "もどる", name: 'back', class: "btn btn-danger" %>
+      <%= f.submit "作り直す", name: 'back', class: "btn btn-danger" %>
     <% end %>
   </div>
 </div>

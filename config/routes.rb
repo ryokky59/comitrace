@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-
-  get '/schedules/top', to: 'schedules#top'
   root 'schedules#top'
+  
   devise_for :users, controllers: {
         registrations: 'users/registrations'
   }
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
   resources :schedules do
     resources :comments
     collection do
+      get :top
       post :confirm
     end
   end

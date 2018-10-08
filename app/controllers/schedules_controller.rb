@@ -1,10 +1,10 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:edit, :update, :destroy, :show]
+  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
   def top; end
 
   def index
-    @schedules = Schedule.order(created_at: :desc).page(params[:page]).per(6)
+    @schedules = Schedule.select(:id, :title, :content, :user_id).includes(:user).order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def new
@@ -39,6 +39,22 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by(id: @schedule.user_id)
+
+    gon.data, gon.labels = @schedule.time_calc
+
+    @favorite = current_user.favorites.find_by(schedule_id: @schedule.id)
+
+    @comments = @schedule.comments.order(created_at: :desc).page(params[:page]).per(5)
+    @comment = @schedule.comments.build
+
+    respond_to do |format|
+      format.js { render 'comments/index' }
+      format.html
+    end
+  end
+
   def edit
     redirect_to schedules_path unless @schedule.user_id == current_user.id
   end
@@ -54,22 +70,6 @@ class SchedulesController < ApplicationController
   def destroy
     @schedule.destroy
     redirect_to schedules_path, notice: "スケジュールを削除しました"
-  end
-
-  def show
-    @user = User.find_by(id: @schedule.user_id)
-
-    gon.data, gon.labels = @schedule.time_calc
-
-    @favorite = current_user.favorites.find_by(schedule_id: @schedule.id)
-
-    @comments = @schedule.comments.order(created_at: :desc).page(params[:page]).per(5)
-    @comment = @schedule.comments.build
-
-    respond_to do |format|
-      format.js { render 'comments/index' }
-      format.html
-    end
   end
 
   private

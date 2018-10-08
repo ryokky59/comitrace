@@ -46,8 +46,12 @@
     </div>
 
     <div class="confirm-btn text-center">
-      <%= f.submit "確認",  class: "btn btn-primary btn-lg" %>
+      <% if controller.action_name == "new" %>
+        <%= f.submit "確認",  class: "btn btn-primary btn-lg" %>
+      <% else %>
+        <%= f.submit "投稿",  class: "btn btn-primary btn-lg" %>
+      <% end %>
     </div>
-    
+
   <% end %>
 </div>
