@@ -13,7 +13,7 @@
   width: 40%;
 }
 
-// index
+//schedule_cards
 .schedule-card .card {
   width: 300px;
 }
@@ -142,6 +142,17 @@
 }
 
 // _schedule_content
+.schedules-schedule-content .user img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 0.5px #6c757d solid;
+}
+
+.schedules-schedule-content .data p {
+  padding: 0, 10px;
+}
+
 .schedules-schedule-content .plan {
   min-height: 350px;
 }
@@ -169,7 +180,6 @@
 }
 
 // _chart
-
 .chartjs-render-monitor {
   max-height: 375px !important;
   max-width: 375px !important;
