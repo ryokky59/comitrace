@@ -18,7 +18,6 @@ class SchedulesController < ApplicationController
 
   def confirm
     @schedule = current_user.schedules.new(schedule_params)
-    @user = User.find_by(id: @schedule.user_id)
 
     if @schedule.valid?
       gon.data, gon.labels = @schedule.time_calc
@@ -39,8 +38,6 @@ class SchedulesController < ApplicationController
 
   def show
     @schedule = Schedule.find(params[:id])
-
-    @user = User.find_by(id: @schedule.user_id)
 
     gon.data, gon.labels = @schedule.time_calc
 

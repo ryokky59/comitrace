@@ -15,10 +15,10 @@
             <% else %>
               <%= image_tag asset_path("usericon.png") %>
             <% end %>
-            <%= link_to @user.name, user_path(id:@user.id) %>
+            <%= link_to @schedule.user.name, user_path(id:@schedule.user.id) %>
           </p>
         </div>
-        
+
         <% unless controller.action_name == "confirm" %>
           <div class="data">
             <span>作成日 : <%= @schedule.updated_at.strftime("%Y-%m-%d") %></span>
