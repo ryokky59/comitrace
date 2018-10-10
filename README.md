@@ -46,4 +46,4 @@ https://yarnpkg.com/lang/en/
 6. `$ rails db:create`
 7. `$ rails db:migrate`
 8. `$ rails server`
-9. http://localhost:3000/ にアクセス
+9. http://localhost:3000/ にアクセス。
