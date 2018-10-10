@@ -18,19 +18,20 @@
             <%= link_to @user.name, user_path(id:@user.id) %>
           </p>
         </div>
-
-        <div class="data">
-          <span>作成日 : <%= @schedule.updated_at.strftime("%Y-%m-%d") %></span>
-          <span class="ml-5">
-            <i class="fa fa-heart color-red"></i>
-            : <%= @schedule.favorites.count %>
-          </span>
-          <span class="ml-1">
-            <i class="fa fa-check color-blue"></i>
-            : <%= @schedule.user_ids.count %>
-          </span>
-        </div>
-
+        
+        <% unless controller.action_name == "confirm" %>
+          <div class="data">
+            <span>作成日 : <%= @schedule.updated_at.strftime("%Y-%m-%d") %></span>
+            <span class="ml-5">
+              <i class="fa fa-heart color-red"></i>
+              : <%= @schedule.favorites.count %>
+            </span>
+            <span class="ml-1">
+              <i class="fa fa-check color-blue"></i>
+              : <%= @schedule.user_ids.count %>
+            </span>
+          </div>
+        <% end %>
 
         <div class="plan text-center">
           <table>

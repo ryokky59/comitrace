@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_user_schedule, only: [:edit, :update, :destroy]
 
   def top; end
 
@@ -17,8 +17,7 @@ class SchedulesController < ApplicationController
   end
 
   def confirm
-    @schedule = Schedule.new(schedule_params)
-    @schedule.user_id = current_user.id
+    @schedule = current_user.schedules.new(schedule_params)
     @user = User.find_by(id: @schedule.user_id)
 
     if @schedule.valid?
@@ -29,8 +28,7 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = Schedule.new(schedule_params)
-    @schedule.user_id = current_user.id
+    @schedule = current_user.schedules.new(schedule_params)
 
     if @schedule.save
       redirect_to schedule_path(id: @schedule.id), notice: "スケジュールを投稿しました"
@@ -40,6 +38,8 @@ class SchedulesController < ApplicationController
   end
 
   def show
+    @schedule = Schedule.find(params[:id])
+
     @user = User.find_by(id: @schedule.user_id)
 
     gon.data, gon.labels = @schedule.time_calc
@@ -77,7 +77,7 @@ class SchedulesController < ApplicationController
     params.require(:schedule).permit(:title, :content, schedule_plans_attributes: [:id, :schedule_id, :plan, :start_time, :end_time, :_destroy])
   end
 
-  def set_schedule
-    @schedule = Schedule.find(params[:id])
+  def set_current_user_schedule
+    @schedule = current_user.schedules.find(params[:id])
   end
 end
