@@ -4,7 +4,7 @@ class SchedulesController < ApplicationController
   def top; end
 
   def index
-    @schedules = Schedule.select(:id, :title, :content, :user_id).includes(:user).order(created_at: :desc).page(params[:page]).per(6)
+    @schedules = Schedule.select(:id, :title, :content, :user_id).includes(:user).recent.page(params[:page]).per(6)
   end
 
   def new
@@ -43,7 +43,7 @@ class SchedulesController < ApplicationController
 
     @favorite = current_user.favorites.find_by(schedule_id: @schedule.id)
 
-    @comments = @schedule.comments.order(created_at: :desc).page(params[:page]).per(5)
+    @comments = @schedule.comments.page(params[:page]).per(5)
     @comment = @schedule.comments.build
 
     respond_to do |format|

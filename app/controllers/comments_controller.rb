@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
   def index
     @schedule = Schedule.find(params[:schedule_id])
-    @comments = @schedule.comments.order(created_at: :desc).page(params[:page]).per(5)
+    @comments = @schedule.comments.page(params[:page]).per(5)
   end
 
   def create
     @schedule = Schedule.find(params[:schedule_id])
     @comment = @schedule.comments.build(comment_params)
     @comment.user_id = current_user.id
-    @comments = @schedule.comments.order(created_at: :desc).page(params[:page]).per(5)
+    @comments = @schedule.comments.page(params[:page]).per(5)
 
     respond_to do |format|
       if @comment.save
