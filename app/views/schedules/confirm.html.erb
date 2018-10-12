@@ -7,7 +7,7 @@
       <%= f.hidden_field :start_time %>
       <%= f.hidden_field :end_time %>
     <% end %>
-    <%= render partial: 'schedule_content' %>
+    <%= render partial: 'schedule_content', locals: { schedule: @schedule } %>
     <div class="create-btn text-center m-3">
       <%= f.submit "投稿", class: "btn btn-primary" %>
     </div>

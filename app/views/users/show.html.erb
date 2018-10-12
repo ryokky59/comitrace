@@ -65,7 +65,7 @@
       <div class="contents p-0 col-sm-8">
         <div id="content">
           <h3 class="p-3 text-center font-weight-bold"><%= @schedule.title if @user.schedule_id.present? %></h3>
-          <%= render 'schedules/chart' if @user.schedule_id.present? %>
+          <%= render partial: 'schedules/chart', locals: { schedule: @schedule } if @user.schedule_id.present? %>
         </div>
       </div>
     </div>

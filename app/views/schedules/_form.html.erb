@@ -1,7 +1,7 @@
 <div class="schedule-form">
-  <%= form_with(model: @schedule, local: true, url: choose_new_or_edit) do |f| %>
+  <%= form_with(model: schedule, local: true, url: choose_new_or_edit) do |f| %>
     <div class="container">
-      <%= render partial: "shareds/schedule_error_messages" %>
+      <%= render partial: "shareds/schedule_error_messages", locals: { schedule: @schedule } %>
       <div class="row">
 
         <div class="schedule-area text-center col-md-6 col-sm-12">

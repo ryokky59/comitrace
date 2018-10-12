@@ -4,31 +4,31 @@
       <div class="contents col-md-4 col-sm-12">
 
         <div class="title">
-          <h3 class="font-weight-bold mb-3"><%= @schedule.title %></h3>
+          <h3 class="font-weight-bold mb-3"><%= schedule.title %></h3>
         </div>
 
         <div class="user">
           <p>
             作成者 :
-            <% if @schedule.user.icon.present? %>
+            <% if schedule.user.icon.present? %>
               <%= image_tag schedule.user.icon %>
             <% else %>
               <%= image_tag asset_path("usericon.png") %>
             <% end %>
-            <%= link_to @schedule.user.name, user_path(id:@schedule.user.id) %>
+            <%= link_to schedule.user.name, user_path(id: schedule.user.id) %>
           </p>
         </div>
 
         <% unless controller.action_name == "confirm" %>
           <div class="data">
-            <span>作成日 : <%= @schedule.updated_at.strftime("%Y-%m-%d") %></span>
+            <span>作成日 : <%= schedule.updated_at.strftime("%Y-%m-%d") %></span>
             <span class="ml-5">
               <i class="fa fa-heart color-red"></i>
-              : <%= @schedule.favorites.count %>
+              : <%= schedule.favorites.count %>
             </span>
             <span class="ml-1">
               <i class="fa fa-check color-blue"></i>
-              : <%= @schedule.user_ids.count %>
+              : <%= schedule.user_ids.count %>
             </span>
           </div>
         <% end %>
@@ -45,7 +45,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @schedule.schedule_plans.each do |schedule_plan| %>
+              <% schedule.schedule_plans.each do |schedule_plan| %>
                 <tr>
                   <td><%= schedule_plan.plan %></td>
                   <td>:</td>
@@ -59,13 +59,13 @@
         </div>
 
         <div class="content">
-          <p><%= @schedule.content %></p>
+          <p><%= schedule.content %></p>
         </div>
 
       </div>
 
       <div class="charts p-0 col-md-8 col-sm-12">
-        <%= render 'chart' %>
+        <%= render partial: 'chart', locals: { schedule: schedule } %>
       </div>
     </div>
   </div>

@@ -5,8 +5,8 @@
     <hr>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render partial: "shareds/user_error_messages" %>
-      
+      <%= render partial: 'shareds/user_error_messages', locals: { user: @user } %>
+
       <div class="form-group">
         <%= f.label :name %><br />
         <%= f.text_field :name, autofocus: false, class: 'form-control' %>
