@@ -42,10 +42,6 @@ gem 'kaminari', '~> 0.17.0'
 gem 'font-awesome-rails'
 gem 'material_icons'
 
-# Rspec
-gem 'rspec-rails'
-gem 'spring-commands-rspec'
-
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
@@ -53,6 +49,9 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
 end
 
 group :development do
