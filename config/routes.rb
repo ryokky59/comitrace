@@ -1,19 +1,22 @@
 Rails.application.routes.draw do
   root 'schedules#top'
-  
+
   devise_for :users, controllers: {
         registrations: 'users/registrations'
   }
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show], shallow: true do
+    resources :create_stocks, only: [:index]
+    resources :favorite_stocks, only: [:index]
+    resources :followers, only: [:index]
+    resources :followings, only: [:index]
     member do
-      get :following, :followers, :favorite_stocks, :create_stocks
       patch :schedule_trace
     end
   end
 
   resources :schedules do
-    resources :comments
+    resources :comments, only: [:index, :create]
     collection do
       get :top
       post :confirm

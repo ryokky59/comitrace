@@ -9,7 +9,7 @@
     <%= link_to 'Trace', schedule_trace_user_path(id: @schedule.id), method: :patch, class: "btn btn-primary fa fa-check fa-2x" %>
   <% end %>
   <div id="favorite_btn" class="favorite d-inline-block m-3">
-    <%= render partial: 'favorite_btn', locals: { schedule: @schedule, favorite: @favorite } %>
+    <%= render partial: 'favorites/favorite_btn', locals: { schedule: @schedule, favorite: @favorite } %>
   </div>
   <div class="edit d-inline-block m-2">
     <% if current_user.id == @schedule.user_id %>

@@ -2,70 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="info text-center col-sm-4">
-
-        <div class="icon">
-          <% if @user.icon.present? %>
-            <%= image_tag @user.icon %>
-          <% else %>
-            <%= image_tag asset_path("usericon.png") %>
-          <% end %>
-        </div>
-
-        <div class="name">
-          <p><%= @user.name %></p>
-        </div>
-
-        <div class="follow-link">
-          <%= render partial: 'follow_link', locals: { user: @user } %>
-        </div>
-
-        <% unless current_user.id == @user.id %>
-        <div class="follow-btn">
-            <%= render partial: 'follow_form', locals: { user: @user } %>
-        </div>
-        <% end %>
-
-          <% if @user.profile.present? %>
-        <div class="profile d-inline-block">
-          <p><%= @user.profile %></p>
-        </div>
-          <% end %>
-
-          <div class="trace">
-            <a href="<%= schedule_path(id: @user.schedule_id) if @user.schedule_id.present? %>" >
-              <i class="fa fa-check"></i>
-              Trace中のスケジュール
-            </a>
-          </div>
-
-          <div class="create">
-            <a href="<%= create_stocks_user_path %>" data-remote="true">
-              <i class="material-icons md-18 align-text-bottom">watch_later</i>
-              作成スケジュール : <%= @user.schedules.count %>
-            </a>
-          </div>
-
-          <div class="favorite">
-            <a href="<%= favorite_stocks_user_path %>" data-remote="true">
-              <i class="fa fa-heart"></i>
-              いいね : <%= @user.favorites.count %>
-            </a>
-          </div>
-
-        <% if current_user.id == @user.id %>
-          <div class="edit mt-5">
-            <%= link_to "アカウント編集", edit_user_registration_path, class: "btn btn-outline-secondary btn-sm" %>
-          </div>
-          <div class="logout-btn m-2">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
-          </div>
-          <% end %>
+        <%= render partial: 'shareds/user_info', locals: { user: @user } %>
       </div>
 
       <div class="contents p-0 col-sm-8">
-        <div id="content">
+        <div class="content">
           <h3 class="p-3 text-center font-weight-bold"><%= @schedule.title if @user.schedule_id.present? %></h3>
-          <%= render partial: 'schedules/chart', locals: { schedule: @schedule } if @user.schedule_id.present? %>
+          <%= render partial: 'shareds/chart', locals: { schedule: @schedule } if @user.schedule_id.present? %>
         </div>
       </div>
     </div>
