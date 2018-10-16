@@ -15,5 +15,9 @@
 //= require bootstrap/dist/js/bootstrap.min
 //= require toastr
 //= require cocoon
+//= require jquery.timepicker.js
+//= require bootstrap-datepicker
+//= require Datepair
+//= require jquery.datepair.js
 //= require Chart.min
 //= require_tree .

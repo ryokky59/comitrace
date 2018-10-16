@@ -1,8 +1,19 @@
-<tr class="nested-fields">
+<tr class="nested-fields" id="fields">
   <td><%= f.text_field :plan, maxlength: 10, size: 15 %></td>
   <td>:</td>
-  <td><%= f.time_field :start_time, step: 600 %></td>
+  <td><%= f.text_field :start_time, id: "start_time", class: "time start", maxlength: 5, size: 7, placeholder: "00:00" %></td>
   <td>〜</td>
-  <td><%= f.time_field :end_time, step: 600 %></td>
+  <td><%= f.text_field :end_time, id: "end_time", class: "time end", maxlength: 5, size: 7, placeholder: "01:00" %></td>
   <td><%= link_to_remove_association "削除", f, class: "btn btn-sm btn-danger" %></td>
 </tr>
+
+<script>
+  $(document).ready(function() {
+    $('#schedule_plans .time').timepicker({
+      'showDuration': true,
+      'timeFormat': 'H:i',
+      'forceRoundTime': true
+    })
+  $('#schedule_plans').datepair();
+  });
+</script>

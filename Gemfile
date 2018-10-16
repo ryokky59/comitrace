@@ -31,6 +31,8 @@ gem 'gon'
 
 # Form
 gem 'cocoon'
+gem 'jquery-timepicker-rails'
+gem 'bootstrap-datepicker-rails'
 
 # Flash Message
 gem 'toastr-rails'
