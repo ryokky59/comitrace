@@ -1,9 +1,10 @@
 class FollowsController < ApplicationController
   respond_to? :js
+
   def create
      @user = User.find(params[:follow][:followed_id])
      current_user.follow(@user)
-     @user
+     @user #js.erbに渡す
   end
 
   def destroy

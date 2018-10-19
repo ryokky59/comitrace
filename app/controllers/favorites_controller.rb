@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = current_user.favorites.find_by(id: params[:id])
+    favorite = current_user.favorites.find_by(id: params[:id]) #pertialで{favorite: @favorite}にしているのでインスタンス変数にはしない
     @schedule = favorite.schedule
     favorite.destroy
   end

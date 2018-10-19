@@ -39,6 +39,7 @@
       </div>
     </footer>
 
+    <% # toastr-railsでのフラッシュメッセージ用 %>
     <% flash.each do |type, msg| %>
       <% type = 'info' if type == 'notice' %>
       <% type = 'error' if type == 'alert' %>
