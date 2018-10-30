@@ -4,11 +4,7 @@
       <div class="user text-center p-2 col-xs-12 col-sm-3">
 
         <div class="icon text-center">
-          <% if user.icon.present? %>
-            <%= image_tag user.icon %>
-          <% else %>
-            <%= image_tag asset_path("usericon.png") %>
-          <% end %>
+          <%= user_icon(user) %>
         </div>
 
         <div class="name text-center">

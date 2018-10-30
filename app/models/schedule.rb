@@ -57,7 +57,7 @@ class Schedule < ApplicationRecord
       break if schedule_plan.start_time.blank? || schedule_plan.end_time.blank?
       if schedule_plan.start_time > schedule_plan.end_time # 00:00を跨いだら
         total_time += 24 * 60 * 60 - (schedule_plan.start_time.to_i - schedule_plan.end_time.to_i)
-      else 
+      else
         total_time += schedule_plan.end_time.to_i - schedule_plan.start_time.to_i
       end
     end

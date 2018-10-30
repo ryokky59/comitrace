@@ -10,11 +10,7 @@
         <div class="user">
           <p>
             作成者 :
-            <% if schedule.user.icon.present? %>
-              <%= image_tag schedule.user.icon %>
-            <% else %>
-              <%= image_tag asset_path("usericon.png") %>
-            <% end %>
+            <%= user_icon(schedule.user) %>
             <%= link_to schedule.user.name, user_path(id: schedule.user.id) %>
           </p>
         </div>

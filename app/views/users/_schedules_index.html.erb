@@ -10,11 +10,7 @@
             <p><%= schedule.content %></p>
           </div>
           <div class="card-footer">
-            <% if schedule.user.icon.present? %>
-              <%= image_tag schedule.user.icon, class: "float-right"%>
-            <% else %>
-              <%= image_tag asset_path("usericon.png"), class: "float-right" %>
-            <% end %>
+            <%= user_icon(schedule.user) %>
             <p class="float-right">投稿者:<%= link_to schedule.user.name, user_path(id: schedule.user_id) %></p>
           </div>
         </div>

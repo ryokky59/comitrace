@@ -38,11 +38,8 @@ class SchedulesController < ApplicationController
 
   def show
     @schedule = Schedule.find(params[:id])
-
     gon.data, gon.labels = @schedule.time_calc
-
     @favorite = current_user.favorites.find_by(schedule_id: @schedule.id)
-
     @comments = @schedule.comments.page(params[:page]).per(5)
     @comment = @schedule.comments.build
 

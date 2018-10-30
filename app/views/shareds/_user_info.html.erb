@@ -1,9 +1,5 @@
 <div class="icon">
-  <% if user.icon.present? %>
-    <%= image_tag user.icon %>
-  <% else %>
-    <%= image_tag asset_path("usericon.png") %>
-  <% end %>
+  <%= user_icon(user) %>
 </div>
 
 <div class="name">
