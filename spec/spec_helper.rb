@@ -13,8 +13,12 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'capybara/rspec' #capybaraを使うため
 RSpec.configure do |config|
-  config.include FactoryBot::Syntax::Methods
+  config.before(:each, type: :system) do #System Specを扱うドライバとしてselenium_chrome_headlessを設定
+    driven_by :selenium_chrome_headless
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
