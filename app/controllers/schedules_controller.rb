@@ -5,6 +5,11 @@ class SchedulesController < ApplicationController
 
   def index
     @schedules = Schedule.select(:id, :title, :content, :user_id).includes(:user).recent.page(params[:page]).per(6)
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
