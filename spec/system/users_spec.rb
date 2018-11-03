@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'ユーザーログイン機能', type: :system do
+describe 'ユーザー関連の機能', type: :system do
   let(:user_a) { create(:user, name: 'ユーザーA', email: 'a@example.com') }
 
   describe 'ユーザーサインアップ' do

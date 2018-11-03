@@ -2,11 +2,8 @@ require 'rails_helper'
 
 describe 'スケジュール管理機能', type: :system do
   describe 'スケジュール一覧' do
-    before do
-      schedule = create(:schedule, title: '最初のスケジュール', content: '内容')
-      plan_a = create(:schedule_plan, start_time: '00:00', end_time: '12:00', schedule: schedule)
-      plan_b = create(:schedule_plan, start_time: '12:00', end_time: '00:00', schedule: schedule)
-    end
+    let(:user_a)  { create(:user) }
+    let!(:schedule_a) { create(:schedule, title: '最初のスケジュール', content: '内容', user: user_a) }
 
     context 'ユーザーAがログインしているとき' do
       before do

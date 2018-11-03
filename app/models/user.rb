@@ -1,11 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
-  validates :profile, length: { maximum: 200 }
-
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i(google)
 
   belongs_to :schedule, optional: true
   has_many :schedules, -> { order(created_at: :desc) }, dependent: :destroy
@@ -17,7 +15,21 @@ class User < ApplicationRecord
   has_many :following, through: :active_follows, source: :followed
   has_many :followers, through: :passive_follows, source: :follower
 
+  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
+  validates :profile, length: { maximum: 200 }
+
   mount_uploader :icon, IconUploader
+
+  def self.find_for_google(auth)
+    user = User.find_by(email: auth.info.email)
+    user = User.new(email: auth.info.email, provider: auth.provider, uid: auth.uid, password: Devise.friendly_token[0, 20]) unless user
+    user.save
+    user
+  end
+
+  def self.create_unique_string
+    SecureRandom.uuid
+  end
 
   def follow(other_user)
     following << other_user

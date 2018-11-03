@@ -40,9 +40,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-    def after_update_path_for(resource)
-      user_path(id: current_user.id)
-    end
+  def build_resource(hash={})
+    hash[:uid] = User.create_unique_string
+    super
+  end
+
+  def after_update_path_for(resource)
+    user_path(id: current_user.id)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
