@@ -5,7 +5,7 @@ class SchedulesController < ApplicationController
 
   def index
     @schedules = Schedule.select(:id, :title, :content, :user_id).includes(:user).recent.page(params[:page]).per(6)
-    
+
     respond_to do |format|
       format.html
       format.js
@@ -49,8 +49,8 @@ class SchedulesController < ApplicationController
     @comment = @schedule.comments.build
 
     respond_to do |format|
-      format.js { render 'comments/index' }
       format.html
+      format.js { render 'comments/index' }
     end
   end
 

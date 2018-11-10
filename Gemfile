@@ -40,6 +40,9 @@ gem 'toastr-rails'
 # Pagenation
 gem 'kaminari', '~> 0.17.0'
 
+# Seach
+gem 'ransack'
+
 # Icon
 gem 'font-awesome-rails'
 gem 'material_icons'

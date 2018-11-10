@@ -24,7 +24,7 @@ class Schedule < ApplicationRecord
       end
       labels << schedule_plan.plan
     end
-    return [data, labels]
+    return data, labels
   end
 
   private
