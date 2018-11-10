@@ -1,0 +1,11 @@
+.users-show
+  .container
+    .row
+      .info.text-center.col-sm-4
+        == render partial: 'shareds/user_info', locals: { user: @user }
+
+      .users-create-stocks.col-sm-8
+        .title.text-center.p-3
+          h3 作成スケジュール
+        #create_stocks
+          == render partial: 'shareds/schedule_cards', locals: { schedules: @schedules }

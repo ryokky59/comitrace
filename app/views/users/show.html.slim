@@ -1,0 +1,11 @@
+.users-show
+  .container
+    .row
+      .info.text-center.col-sm-4
+        == render partial: 'shareds/user_info', locals: { user: @user }
+
+      .contents.p-0.col-sm-8
+        .content
+          - if @user.schedule_id.present?
+            h3.p-3.text-center.font-weight-bold = @schedule.title
+            == render partial: 'shareds/chart', locals: { schedule: @schedule }

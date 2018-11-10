@@ -1,0 +1,10 @@
+.users-show
+  .container
+    .row
+      .info.text-center.col-sm-4
+        == render partial: 'shareds/user_info', locals: { user: @user }
+      .users-followers.text-center.col-sm-8
+        .title.p-3
+          h3 フォロワー
+        #followers
+          == render partial: 'shareds/follow_users', locals: { users: @users }

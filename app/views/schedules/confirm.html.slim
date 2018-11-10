@@ -1,0 +1,21 @@
+.schedule-confirm
+  = form_with(model: @schedule, local: true, url: schedules_path) do |f|
+    = f.hidden_field :title
+    = f.hidden_field :content
+    = f.fields_for :schedule_plans do |f|
+      = f.hidden_field :plan
+      = f.hidden_field :start_time
+      = f.hidden_field :end_time
+    == render partial: 'schedule_content', locals: { schedule: @schedule }
+    .create-btn.text-center.m-3
+      = f.submit '投稿', class: 'btn btn-primary'
+
+  .back-btn.text-center.m-3
+    = form_with(model: @schedule, local: true, url: new_schedule_path, method: 'get') do |f|
+      = f.hidden_field :title
+      = f.hidden_field :content
+      = f.fields_for :schedule_plans do |f|
+        = f.hidden_field :plan
+        = f.hidden_field :start_time
+        = f.hidden_field :end_time
+      = f.submit '作り直す', name: 'back', class: 'btn btn-danger'

@@ -1,0 +1,46 @@
+.schedules-schedule-content
+  .container
+    .row
+      .contents.col-md-4.col-sm-12
+        .title
+          h3.font-weight-bold.mb-3 = schedule.title
+        .user
+          p 作成者 :
+            #{ user_icon(schedule.user) }
+            #{ schedule.user.name }
+        - unless controller.action_name == 'confirm'
+          .data
+            span 作成日：
+              #{ schedule.updated_at.strftime('%Y-%m-%d') }
+            span.ml-5
+              i.fa.fa-heart.color-red
+                |
+                  :
+                  #{ schedule.favorites.count }
+            span.ml-1
+              i.fa.fa-check.color-blue
+                |
+                  :
+                  #{ schedule.user_ids.count }
+        .plan.text-center
+          table
+            thead
+              tr
+                th 予定
+                th
+                th 開始時間
+                th
+                th 終了時間
+            tbody
+              - schedule.schedule_plans.each do |schedule_plan|
+                tr
+                  td = schedule_plan.plan
+                  td ：
+                  td = schedule_plan.start_time.strftime('%H : %M')
+                  td 〜
+                  td = schedule_plan.end_time.strftime('%H : %M')
+        .content
+          p = schedule.content
+
+      .charts.p-0.col-md-8.col-sm-12
+        = render partial: 'shareds/chart', locals: { schedule: schedule}

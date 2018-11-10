@@ -1,0 +1,22 @@
+.container
+  .row
+    - schedules.each do |schedule|
+      .schedule-card.p-0.col-lg-4.col-md-6.col-sm-12
+        .card.m-3
+          .card-header.bg-primary
+            = link_to schedule.title, schedule
+          .card-body
+            = schedule.content.truncate(65)
+          .card-footer
+            .user
+              p.float-right
+                = user_icon(schedule.user)
+                = link_to schedule.user.name, schedule.user
+            .favorite
+              p.float-left
+                i.fa.fa-heart.color-red
+                ':
+                = schedule.favorites.count
+
+.schedule-cards-pagenation
+  = paginate schedules, remote: true

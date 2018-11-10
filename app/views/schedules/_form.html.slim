@@ -1,0 +1,34 @@
+.schedule-form
+  = form_with(model: schedule, local: true, url: choose_new_or_edit) do |f|
+    .container
+      == render partial: 'shareds/schedule_error_messages', locals: { schedule: @schedule }
+      .row
+        .schedule-area.text-center.col-md-6.col-sm-12
+          .title-form.d-inline-block
+            p タイトル
+            = f.text_field :title, maxlength: 30
+          .content-form.d-inline-block
+            p 内容
+            = f.text_area :content, maxlength: 300
+
+        .schedule-plan-area.text-center.col-md-6.col-sm-12
+          p 24時間になるように入力してください
+          p 2つ目以降の開始時間は一つ前の終了時間と同じ時間にしてください
+          table
+            thead
+              tr
+                th.text-center 予定
+                th
+                th.text-center 開始時間
+                th
+                th.text-center 終了時間
+                th.text-center= link_to_add_association '追加', f, :schedule_plans, id: 'add-link', class: 'btn btn-sm btn-primary', data: { association_insertion_node: '#schedule_plans', association_insertion_method: 'append' }
+            tbody#schedule_plans
+              = f.fields_for :schedule_plans do |schedule_plan|
+                == render 'schedule_plan_fields', f: schedule_plan
+
+      .cofirm-btn.text-center
+        - if controller.action_name == 'new'
+          = f.submit '確認', class: 'btn btn-primary btn-lg'
+        - else
+          = f.submit '投稿', class: 'btn btn-primary btn-lg'

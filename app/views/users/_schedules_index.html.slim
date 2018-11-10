@@ -1,0 +1,15 @@
+.container
+  .row
+    - @schedules.each do |schedule|
+      .schedule-index-card.col-md-6.col-sm-12
+        .card
+          .card-header
+            = link_to schedule.title, schedule
+          .card-body
+            p = schedule.content
+          .card-footer
+            = user_icon(schedule.user)
+            p.float-right 投稿者: = link_to schedule.user.name user
+
+.schedule-index-pagenation
+  = paginate @schedules

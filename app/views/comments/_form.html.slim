@@ -1,0 +1,8 @@
+.comment-form
+  = form_with(model: [schedule, comment]) do |f|
+    .form.d-inline-block.text-center
+      .textarea
+        p コメント
+        = f.text_area :comment
+      .btn
+        = f.submit '投稿', class: 'btn btn-secondary'

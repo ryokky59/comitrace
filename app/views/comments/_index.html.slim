@@ -1,0 +1,10 @@
+.comment-index
+  - comments.each do |comment|
+    - if comment.id.present?
+      .contents.d-inline-block.text-center
+        .info
+          span = comment.updated_at.strftime('%Y-%m-%d %H:%M')
+          span 投稿者: #{ link_to comment.user.name, comment.user }
+        p = comment.comment
+
+  = paginate comments, remote: true

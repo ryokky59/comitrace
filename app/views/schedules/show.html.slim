@@ -1,0 +1,19 @@
+.schedule-show
+  == render partial: 'schedule_content', locals: { schedule: @schedule }
+
+.show-btn.text-center.m-3
+  - if current_user.schedule_id == @schedule.id
+    p.m-0.btn.btn-primary.disabled.fa.fa-check.fa-2x 選択中
+  - else
+    = link_to 'Trace', schedule_trace_user_path(id: @schedule), method: :patch, class: 'btn btn-primary fa fa-check fa-2x'
+  #favorite_btn.favorite.d-inline-block.m-3
+    == render partial: 'favorites/favorite_btn', locals: { schedule: @schedule, favorite: @favorite }
+  .edit.d-inline-block.m-2
+    - if current_user.id == @schedule.user_id
+      = link_to '編集', edit_schedule_path(@schedule), class: 'btn btn-outline-secondary'
+      = link_to '削除', @schedule, method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-outline-secondary'
+
+.show-comments.text-center
+  #comments_area
+    == render partial: 'comments/index', locals: { comments: @comments, schedule: @schedule }
+  == render partial: 'comments/form', locals: { comment: @comment, schedule: @schedule }
