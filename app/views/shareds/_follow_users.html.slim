@@ -1,0 +1,21 @@
+.users-follow-users
+  - users.each do |user|
+    .users.row.m-3
+      .user.text-center.p-2.col-xs-12.col-sm-3
+        .icon.text-center
+          = user_icon(user)
+        .name.text-center
+          h4 = link_to user.name, user
+      .profile.text-center.p-2.col-xs-12.col-sm-7
+        - if user.profile.present?
+          p = user.profile.truncate(60)
+      .icon.text-center.p-2.col-xs-12.col-sm-2
+        p
+          i.material-icons.md-18.align-text-bottom watch_later #{ user.schedules.count }
+        p
+          i.fa.fa-heart #{ user.favorites.count }
+      .trace
+        p
+          i.fa.fa-check Trace中のスケジュール : #{ link_to user.schedule.title, user.schedule if user.schedule_id.present? }
+
+  = paginate users, remote: true

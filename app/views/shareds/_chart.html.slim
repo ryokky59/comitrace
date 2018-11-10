@@ -1,0 +1,9 @@
+.schedule-chart.mt-4.row
+  .left.text-right.d-none.d-lg-block.col-sm-1
+    p = schedule.schedule_plans[0].start_time.since(18.hours).strftime('%H : %M')
+  .center.text-center.col-sm-10
+    p = schedule.schedule_plans[0].start_time.strftime('%H : %M')
+    canvas#chart width="100%" height="100%"
+    p = schedule.schedule_plans[0].start_time.since(12.hours).strftime('%H : %M')
+  .right.text-left.d-none.d-lg-block.col-sm-1
+    p = schedule.schedule_plans[0].start_time.since(6.hours).strftime('%H : %M')

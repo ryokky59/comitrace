@@ -1,0 +1,7 @@
+| $("#follow_form_"+"
+= @user.id
+| ").html("
+= j(render 'follows/follow_form', { user: @user })
+| ") $("#follow_link").html("
+= j(render 'follows/follow_link', { user: @user })
+| ") 

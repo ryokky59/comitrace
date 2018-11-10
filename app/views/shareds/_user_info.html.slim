@@ -1,0 +1,29 @@
+.icon
+  = user_icon(user)
+.name
+  = user.name
+.follow-link
+  == render partial: 'follows/follow_link', locals: { user: user }
+- unless current_user.id == user.id
+  .follow-btn
+    == render partial: 'follows/follow_form', locals: { user: user }
+- if user.profile.present?
+  .profile.d-inline-block
+    p = user.profile
+.trace
+  a href="#{ schedule_path(id: user.schedule_id) if user.schedule_id.present? }"
+    i.fa.fa-check
+    'Trace中のスケジュール
+.create
+  a href="#{ user_create_stocks_path(user_id: user.id) }"
+    i.material-icons.md-18.align-text-bottom watch_later
+    '作成スケジュール : #{ user.schedules.count }
+.favorite
+  a href="#{ user_favorite_stocks_path(user_id: user.id) }"
+    i.fa.fa-heart
+    'いいね : #{ user.favorites.count }
+- if current_user.id == user.id
+  .edit.mt-5
+    = link_to 'アカウント編集', edit_user_registration_path, class: 'btn btn-outline-secondary btn-sm'
+  .logout-btn.m-2
+    = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary btn-sm'

@@ -1,0 +1,59 @@
+.row
+  .col-lg-4.col-md-6.ml-auto.mr-auto
+    h1
+      | アカウント編集
+    hr
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = render partial: 'shareds/user_error_messages', locals: { user: @user }
+      .form-group
+        = f.label :icon
+        br
+        = f.file_field :icon, autofocus: false
+      .form-group
+        = f.label :name
+        br
+        = f.text_field :name, autofocus: false, class: 'form-control'
+      .form-group
+        = f.label :profile
+        br
+        = f.text_area :profile, autofocus: false, class: 'form-control'
+      .form-group
+        = f.label :email
+        br
+        = f.email_field :email, class: 'form-control'
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        = t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
+      .form-group
+        = f.label :password
+        i
+          | (
+          = t('.leave_blank_if_you_don_t_want_to_change_it')
+          | )
+        br
+        = f.password_field :password, autocomplete: "off", class: 'form-control'
+        - if @minimum_password_length
+          br
+          em
+            = t('devise.shared.minimum_password_length', count: @minimum_password_length)
+      .form-group
+        = f.label :password_confirmation
+        br
+        = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+      .form-group
+        = f.label :current_password
+        i
+          | (
+          = t('.we_need_your_current_password_to_confirm_your_changes')
+          | )
+        br
+        = f.password_field :current_password, autocomplete: "off", class: 'form-control'
+      .form-group
+        = f.submit t('.update'), class: 'btn btn-lg btn-block btn-primary'
+    hr
+    h2
+      = t('.cancel_my_account')
+    p
+      = t('.unhappy')
+      = button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: "btn btn-danger"
+    = link_to t('devise.shared.links.back'), :back
+    hr
