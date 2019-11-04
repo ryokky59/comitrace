@@ -1,0 +1,17 @@
+---
+version: "3.7"
+
+services:
+  comitrace:
+    build: .
+    command: bundle exec rails s
+    ports:
+      # 自分:コンテナ
+      - 3000:3000
+    links:
+      - db
+    volumes:
+      - ./:/app
+
+  db:
+    image: postgres:10
