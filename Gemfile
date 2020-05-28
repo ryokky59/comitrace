@@ -39,7 +39,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'toastr-rails'
 
 # Pagenation
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari', '~> 1.2.1'
 
 # Seach
 gem 'ransack'
